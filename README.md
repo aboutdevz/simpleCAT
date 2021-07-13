@@ -14,7 +14,7 @@ composer install
 Usage
 ------------
 
--download zip / clone repo
--paste in htdocs
--run localhost in xampp
+- download zip / clone repo
+- paste in htdocs
+- run localhost in xampp
 
