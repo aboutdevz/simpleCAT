@@ -1,8 +1,20 @@
 # Simple Cat
 
-## Usage
 
-install dependencies
-```npm install```
-```composer install```
 
+Instalation
+------------
+```sh
+npm install
+
+```
+```sh
+composer install
+```
+Usage
+------------
+```sh
+-download zip / clone repo
+-paste in htdocs
+-run localhost in xampp
+```
