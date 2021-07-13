@@ -1,0 +1,135 @@
+/* CSS HEX */
+:root
+{
+
+    --pansy-purple: #770042ff;
+    --sizzling-red: #f05d5eff;
+    --jonquil: #f9c80eff;
+    --illuminating-emerald: #00916eff;
+    --blue-jeans: #48acf0ff;
+    --cadet-gray: #99A1A6;
+    --cobalt-blue: #1446A0;
+
+    font-size: calc(16px + 0.1vw);
+}
+
+
+
+*
+{
+    padding: 0;
+    margin: 0;
+}
+html
+{
+    overflow: auto;
+    width: 100% !important; 
+}
+body
+{
+    padding: 0;
+    margin: 0;
+    display: flex;
+    height: 100vh;
+    flex-direction: column;
+    width: 100%;
+}
+
+
+.btn-soal button
+{
+    width: 30% !important ;
+}
+
+.bg-primary
+{
+    background-color: var(--pansy-purple) !important;
+    color: white !important;
+}
+.bg-secondary
+{
+    background-color: var(--cadet-gray) !important;
+    color: white !important;
+}
+.bg-warning
+{
+    background-color: var(--jonquil) !important;
+    color: white !important;
+}
+.bg-info
+{
+    background-color: var(--blue-jeans) !important;
+    color: white !important;
+}
+.bg-success
+{
+    background-color: var(--illuminating-emerald) !important;
+    color: white !important;
+}
+.bg-danger
+{
+    background-color: var(--sizzling-red) !important;
+    color: white !important;
+}
+
+.btn-success
+{
+    background-color: var(--illuminating-emerald) !important;
+    color: white !important;
+}
+.btn-danger
+{
+    background-color: var(--sizzling-red) !important;
+    color: white !important;
+}
+
+
+.hasil-logo
+{
+    opacity: 0.2;
+    top:150px;
+    z-index: -1;
+}
+
+.row-hasil
+{
+    z-index: 1;
+}
+
+.modal-container
+{
+    height: 100vh;
+    width: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+   
+}
+
+.form-group
+{
+    margin:2em 0 2em 0 ;
+}
+
+.dropdown-item:focus
+{
+    background-color: var(--pansy-purple);
+    color:white;
+}
+.dropdown-item:last-child:focus
+{
+    
+    
+        background-color: var(--sizzling-red);
+        color: white;
+    
+}
+
+.list-item-jawaban
+{
+    
+    height: 2em;
+    
+    padding: .1em .2em;
+}
+
+
+
