@@ -16,6 +16,10 @@ class AddTbHasil extends Migration
 		'id_mahasiswa' => [
 			'type' => 'INT'
 		],
+		'jawaban' => [
+			'type' => 'TEXT'
+			
+		],
 		'skor' => [
 			'type' => 'VARCHAR',
 			'constraint' => 255

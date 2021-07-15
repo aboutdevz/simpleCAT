@@ -1,7 +1,7 @@
 <?= $this->extend('layout/master.php') ?>
 
 <?= $this->section('main'); ?>
-<?=view_cell('\App\Controllers\Layout::mhsNav');?>
+<?= view_cell('\App\Controllers\Layout::mhsNav'); ?>
 <div class="row mt-lg-4">
 
 
@@ -20,63 +20,49 @@
                     <div class="carousel-inner ps-lg-2">
 
                         <div class="carousel-item active">
+                            <?= form_open('Soal/submit') ?>
+                            <?= csrf_field() ?>
                             <ol class="list-contain">
-                                <li>
-                                    <div class="soal card bg-light p-2 mb-4 ms-1" style="text-align: justify;">
 
-                                        Halo Dunia Halo DuniaHalo DuniaHalo DuniaHalo DuniaHalo DuniaHalo
-                                        DuniaHalo DuniaHalo DuniaHalo DuniaHalo DuniaHalo Dunia
+                                <?php foreach ($dataSoal as $data) : ?>
+                                    <li class="mb-3">
+                                        <div class="soal card bg-light p-2 mb-4 ms-1" style="text-align: justify;">
 
-                                    </div>
-                                    <ol type="A" class="">
-                                        <li class="list-item-jawaban w-100">
-                                            <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault2" checked>
-                                            <label class="form-check-label" for="flexRadioDefault2">
-                                                Default checked radio
-                                            </label>
-                                        </li>
-                                        <li class="list-item-jawaban w-100"><input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault2" checked>
-                                            <label class="form-check-label" for="flexRadioDefault2">
-                                                Default checked radio
-                                            </label>
-                                        </li>
-                                        <li class="list-item-jawaban w-100"><input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault2" checked>
-                                            <label class="form-check-label" for="flexRadioDefault2">
-                                                Default checked radio
-                                            </label>
-                                        </li>
-                                        <li class="list-item-jawaban w-100"><input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault2" checked>
-                                            <label class="form-check-label" for="flexRadioDefault2">
-                                                Default checked radio
-                                            </label>
-                                        </li>
+                                            <?= $data['soal'] ?>
 
-                                    </ol>
+                                        </div>
+                                        <ol type="A" class="">
+                                            <li class="list-item-jawaban h-100 w-100">
+                                                <input class="form-check-input" type="radio" value="A" name="<?= $data['id'] ?>" id="input-jawaban" >
+                                                    <?= $data['opsi_a'] ?>
+                                                <label class="form-check-label" for="input-jawaban">
+                                                </label>
+                                            </li>
+                                            <li class="list-item-jawaban h-100 w-100"><input class="form-check-input" type="radio" value="B" name="<?= $data['id'] ?>" id="input-jawaban" >
+                                                    <?= $data['opsi_b'] ?>
+                                                <label class="form-check-label" for="input-jawaban">
+                                                </label>
+                                            </li>
+                                            <li class="list-item-jawaban h-100 w-100"><input class="form-check-input" type="radio" value="C" name="<?= $data['id'] ?>" id="input-jawaban" >
+                                                    <?= $data['opsi_c'] ?>
+                                                <label class="form-check-label" for="input-jawaban">
+                                                </label>
+                                            </li>
+                                            <li class="list-item-jawaban h-100 w-100"><input class="form-check-input" type="radio" value="D" name="<?= $data['id'] ?>" id="input-jawaban" >
+                                                    <?= $data['opsi_d'] ?>
+                                                <label class="form-check-label" for="input-jawaban">
+                                                </label>
+                                            </li>
 
-                                </li>
+                                        </ol>
+
+
+                                    </li>
+                                <?php endforeach; ?>
                             </ol>
 
-                            <h1>Halo Dunia</h1>
-                            <h1>Halo Dunia</h1>
-                            <h1>Halo Dunia</h1>
-                            <h1>Halo Dunia</h1>
-                            <h1>Halo Dunia</h1>
-                            <h1>Halo Dunia</h1>
-                            <h1>Halo Dunia</h1>
-                            <h1>Halo Dunia</h1>
-                            <h1>Halo Dunia</h1>
-                            <h1>Halo Dunia</h1>
-                            <h1>Halo Dunia</h1>
-                            <h1>Halo Dunia</h1>
-                            <h1>Halo Dunia</h1>
-                            <h1>Halo Dunia</h1>
-                            <h1>Halo Dunia</h1>
-                            <h1>Halo Dunia</h1>
-                            <h1>Halo Dunia</h1>
-                            <h1>Halo Dunia</h1>
-                            <h1>Halo Dunia</h1>
-                            <h1>Halo Dunia</h1>
-                            <h1>Halo Dunia</h1>
+
+                            <?= form_close() ?>
                         </div>
                         <div class="carousel-item">
                             <ol class="list-contain">

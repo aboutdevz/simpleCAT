@@ -7,7 +7,7 @@
 <div class="row d-flex align-items-center justify-content-center" style="height: 100vh;">
     <div class="col-12 col-md-6 col-lg-4">
         <div class="card  p-5 border-0 rounded-3 shadow-lg" style="max-width: 800px;">
-            <img src="<?= imgAsset('appImg/person-icon.png') ?>" alt="person" class="mx-auto" width="100px" height="auto">
+            <img src="<?= imgAsset('appImg/fav.png') ?>" alt="person" class="mx-auto" width="100px" height="auto">
             <h1 class="text-center card-title">Login</h1>
             <?= form_open('Login/auth') ?> <div class="mb-3">
                 <?= csrf_field() ?>
