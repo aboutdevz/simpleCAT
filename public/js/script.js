@@ -119,6 +119,7 @@ $(function () {
   var modalSoal = $("#soal-modal");
 
   btnTambahSoal.on("click", function () {
+    deleteInputValue();
     labelFormSoal.html("Tambah Data Soal");
     modalSoal.modal("toggle");
     modalSoal.modal("show");
@@ -204,7 +205,6 @@ $(function () {
       cache: false,
       success: function (response) {
         var data = JSON.parse(response);
-        console.log(data);
         kategori.val(data.id_kategori);
         jenis.val(data.id_jenis);
         quill.root.innerHTML = data.soal;
@@ -317,7 +317,6 @@ $(function () {
             modalSoal.modal("hide");
             deleteInputValue();
             window.location.reload();
-            console.log(response);
           },
           error: function (xhr) {
             // if error occured
@@ -350,6 +349,7 @@ $(function () {
   var modalMahasiswa = $("#mahasiswa-modal");
 
     $('#daftar-mahasiswa tbody').on("click","tr .hapusDataMahasiswa", function (event) {
+      
       var id = $(this).data("id");
       var formData = new FormData();
       formData.append("id", id);
@@ -382,7 +382,6 @@ $(function () {
               modalMahasiswa.modal("hide");
               deleteInputValue();
               window.location.reload();
-              console.log(response);
             },
             error: function (xhr) {
               // if error occured
@@ -406,7 +405,6 @@ $(function () {
     });
 
     $('#daftar-mahasiswa tbody').on("click","tr .updateDataMahasiswa", function (event) {
-      console.log("modal mhs udpate");
       labelFormMahasiswa.html("Update Data Mahasiswa");
       modalMahasiswa.modal("toggle");
       modalMahasiswa.modal("show");
@@ -422,16 +420,19 @@ $(function () {
         cache: false,
         success: function (response) {
           var data = JSON.parse(response);
-          console.log(data);
-          console.log(data.nim);
           $("#NIM").val(data.nim);
           $("#nama").val(data.nama_mhs);
-          $("#kelamin").val(data.jenis_kelamin);
+          if (data.jenis_kelamin == "P") {
+
+            $("#kelamin_P").prop('checked',true);
+          } else
+          {
+            $("#kelamin_L").prop('checked',true);
+          }
           $("#prodi").val(data.prodi);
           $("#ttl").val(data.ttl);
           $("#email").val(data.email);
           $("#no_hp").val(data.no_hp);
-          console.log(formData);
           formMahasiswa.submit(function (event) {
             Swal.fire({
               title: "Yakin Update Data?",
@@ -459,9 +460,7 @@ $(function () {
                   formData.append("email", $("#email").val());
                   formData.append("no_hp", $("#no_hp").val());
                   formData.append("id", id);
-                  console.log(formData);
                 }
-                console.log(formData);
                 $.ajax({
                   type: "POST",
                   url: baseUrl("Dashboard/updateMahasiswa"),
@@ -481,7 +480,6 @@ $(function () {
                     modalMahasiswa.modal("hide");
                     deleteInputValue();
                     window.location.reload();
-                    console.log(response);
                   },
                   error: function (xhr) {
                     // if error occured
@@ -524,9 +522,8 @@ $(function () {
     });
 
   btnTambahMahasiswa.on("click", function () {
-    console.log("button tambah mhs di klik");
+    deleteInputValue();
 
-    console.log("modal mhs tambah");
     labelFormMahasiswa.html("Tambah Data Mahasiswa");
     modalMahasiswa.modal("toggle");
     modalMahasiswa.modal("show");

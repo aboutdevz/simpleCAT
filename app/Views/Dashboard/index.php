@@ -226,12 +226,12 @@
                     </div>
                     <label class="form-label" for=""><b>Jenis Kelamin</b> </label><br>
                     <div class="form-check form-check-inline">
-                        <input class="form-check-input" type="radio" name="kelamin" value="L" id="kelamin" required>
+                        <input class="form-check-input" type="radio" name="kelamin" value="L" id="kelamin_L" required>
 
                         <span class="form-check-label">Laki - Laki</span>
                     </div>
                     <div class="form-check form-check-inline">
-                        <input class="form-check-input" type="radio" name="kelamin" value="P" id="kelamin" required>
+                        <input class="form-check-input" type="radio" name="kelamin" value="P" id="kelamin_P" required>
 
                         <span class="form-check-label">Perempuan</span>
                     </div>
@@ -318,9 +318,8 @@
                         <label class="form-label" for="soal-container"><b>Soal</b> </label>
 
                         <div class="ql-editor" id="soal-container">
-                            <p>Hello World!</p>
-                            <p>Some initial <strong>bold</strong> text</p>
-                            <p><br></p>
+                            
+
                         </div>
                         <span class="form-text">Tulislah Soal</span>
 
@@ -330,9 +329,8 @@
                         <input type="hidden" name="opsiA" id="opsiA">
                         <label class="form-label" for="opsiA"><b>Opsi A</b> </label>
                         <div class="ql-editor" id="opsiA-container">
-                            <p>Hello World!</p>
-                            <p>Some initial <strong>bold</strong> text</p>
-                            <p><br></p>
+                            
+
                         </div>
                         <span class="form-text">Masukkan Opsi A</span>
                     </div>
@@ -341,9 +339,8 @@
                         <input type="hidden" name="soalB" id="soalB">
                         <label class="form-label" for="opsiB"><b>Opsi B</b> </label>
                         <div class="ql-editor" id="opsiB-container">
-                            <p>Hello World!</p>
-                            <p>Some initial <strong>bold</strong> text</p>
-                            <p><br></p>
+                            
+
                         </div>
                         <span class="form-text">Masukkan Opsi B</span>
                     </div>
@@ -351,9 +348,8 @@
                         <input type="hidden" name="opsiC" id="opsiC">
                         <label class="form-label" for="opsiC"><b>Opsi C</b> </label>
                         <div class="ql-editor" id="opsiC-container">
-                            <p>Hello World!</p>
-                            <p>Some initial <strong>bold</strong> text</p>
-                            <p><br></p>
+                            
+
                         </div>
                         <span class="form-text">Masukkan Opsi C</span>
                     </div>
@@ -361,7 +357,7 @@
                         <input type="hidden" name="opsiD" id="opsiD">
                         <label class="form-label" for="opsiD"><b>Opsi D</b> </label>
                         <div class="ql-editor" id="opsiD-container">
-                            {"ops":[{"insert":"Hello World!\nSome initial "},{"attributes":{"bold":true},"insert":"bold"},{"insert":" text\n\n"}]}
+                            
                         </div>
                         <span class="form-text">Masukkan Opsi D</span>
                     </div>
