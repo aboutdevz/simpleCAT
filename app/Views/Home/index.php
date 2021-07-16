@@ -39,7 +39,7 @@
                 </div>
             </div>
             <div class="row">
-                <button class="btn bg-primary">Mulai</button>
+                <a href="<?=base_url('Soal')?>" class="btn w-100 bg-primary">Mulai</a>
             </div>
         </div>
     </div>

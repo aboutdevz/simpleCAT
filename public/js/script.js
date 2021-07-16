@@ -601,4 +601,21 @@ $(function () {
       event.preventDefault();
     });
   });
+
+  $('#soal-submit').on('click',function () {
+    Swal.fire({
+      title: "Yakin Ingin Menyelesaikan Ujian?",
+      icon: "question",
+      showCancelButton: true,
+      confirmButtonColor: "#770042",
+      confirmButtonText: "Ya",
+      cancelButtonText: "Tidak",
+      buttonsStyling: true,
+    }).then(function (result) {
+        if (result.isConfirmed) {
+          window.location.href = baseUrl('Selesai');
+        }
+    });
+  });
+
 });

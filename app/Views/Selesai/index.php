@@ -13,7 +13,7 @@
                     <br>
                     <h3>anda telah menyelesaikan tes potensi akademik</h3>
                     <br><br>
-                    <button class="btn btn-lg bg-primary text-white">lihat hasil tes</button>
+                    <a class="btn btn-lg bg-primary text-white" href="<?=base_url('Hasil');?>">lihat hasil tes</a>
                 </div>
             </div>
         </div>

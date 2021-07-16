@@ -289,7 +289,8 @@
                 </button>
             </div>
             <div class="modal-body">
-                <form action="" id="formSoal" enctype="multipart/form-data">
+                <form 
+                 id="formSoal" enctype="multipart/form-data">
                     <div class="form-group mt-3">
                         <label class="form-label" for="jenis-soal"><b>Jenis</b> </label>
                         <select class="form-select" name="jenis-soal" id="jenis-soal-input" required>
