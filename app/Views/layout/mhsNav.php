@@ -7,7 +7,7 @@
         Peserta
     </a>
     <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-        <li><a class="dropdown-item" href="#">Action</a></li>
+        <li><a class="dropdown-item" href="#">Profil</a></li>
         <li><a class="dropdown-item" href="#">Another action</a></li>
         <li>
             <hr class="dropdown-divider">
@@ -15,6 +15,6 @@
         <li class="logoutNav"><a class="dropdown-item text-danger" href="<?=base_url('Logout')?>">Logout</a></li>
     </ul>
 </li>
-
+    
 
 <?=$this->endSection()?>

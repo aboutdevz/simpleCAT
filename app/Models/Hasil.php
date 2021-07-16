@@ -39,4 +39,27 @@ class Hasil extends Model
 	protected $afterFind            = [];
 	protected $beforeDelete         = [];
 	protected $afterDelete          = [];
+
+	public function getHasil()
+	{
+		$query = $this->db->query("SELECT `tb_hasil`.*,`tb_mahasiswa`.`nama_mhs`,`tb_mahasiswa`.`nim` FROM tb_hasil INNER JOIN `tb_mahasiswa` ON `tb_mahasiswa`.`id` = `tb_hasil`.`id_mahasiswa`");
+		$rowCount = $query->getNumRows();
+
+		if ($rowCount > 0) {
+
+			$field = $query->getResultArray();
+			$data = [
+				'field' => $field,
+				'status' => true
+			];
+			return $data;
+		} else {
+
+			$data = [
+				'field' => null,
+				'status' => false
+			];
+			return $data;
+		}
+	}
 }

@@ -7,7 +7,16 @@
 
     <div class="soal-container mt-4  col-12  pt-0 ">
         <div class="bg-primary text-white px-4">
-            <small class="  word-wrap fs-3 fw-light w-100 p-lg-4">Soal Logika / Verbal / Kuantitatif</small>
+            <div class="row">
+                <div class="col-11">
+
+                    <small class="title-soal word-wrap fs-3 fw-light w-100 p-lg-4">Soal Logika </small>
+                </div>
+                <div class="col-1">
+                    <small class="fw-bold">Soal Logika </small>
+
+                </div>
+            </div>
         </div>
         <div class="card m " style="min-height: 80vh; max-height: 80vh;" data-scrollbar="true">
 
@@ -24,7 +33,7 @@
                             <?= csrf_field() ?>
                             <ol class="list-contain">
 
-                                <?php foreach ($dataSoal as $data) : ?>
+                                <?php foreach ($dataSoal['verbal'] as $data) : ?>
                                     <li class="mb-3">
                                         <div class="soal card bg-light p-2 mb-4 ms-1" style="text-align: justify;">
 
@@ -33,22 +42,22 @@
                                         </div>
                                         <ol type="A" class="">
                                             <li class="list-item-jawaban h-100 w-100">
-                                                <input class="form-check-input" type="radio" value="A" name="<?= $data['id'] ?>" id="input-jawaban" >
+                                                <input class="form-check-input" type="radio" value="A" name="<?= $data['id'] ?>" >
                                                     <?= $data['opsi_a'] ?>
                                                 <label class="form-check-label" for="input-jawaban">
                                                 </label>
                                             </li>
-                                            <li class="list-item-jawaban h-100 w-100"><input class="form-check-input" type="radio" value="B" name="<?= $data['id'] ?>" id="input-jawaban" >
+                                            <li class="list-item-jawaban h-100 w-100"><input class="form-check-input" type="radio" value="B" name="<?= $data['id'] ?>" >
                                                     <?= $data['opsi_b'] ?>
                                                 <label class="form-check-label" for="input-jawaban">
                                                 </label>
                                             </li>
-                                            <li class="list-item-jawaban h-100 w-100"><input class="form-check-input" type="radio" value="C" name="<?= $data['id'] ?>" id="input-jawaban" >
+                                            <li class="list-item-jawaban h-100 w-100"><input class="form-check-input" type="radio" value="C" name="<?= $data['id'] ?>" >
                                                     <?= $data['opsi_c'] ?>
                                                 <label class="form-check-label" for="input-jawaban">
                                                 </label>
                                             </li>
-                                            <li class="list-item-jawaban h-100 w-100"><input class="form-check-input" type="radio" value="D" name="<?= $data['id'] ?>" id="input-jawaban" >
+                                            <li class="list-item-jawaban h-100 w-100"><input class="form-check-input" type="radio" value="D" name="<?= $data['id'] ?>" >
                                                     <?= $data['opsi_d'] ?>
                                                 <label class="form-check-label" for="input-jawaban">
                                                 </label>
@@ -65,78 +74,94 @@
                             <?= form_close() ?>
                         </div>
                         <div class="carousel-item">
+                        <?= form_open('Soal/submit') ?>
+                            <?= csrf_field() ?>
                             <ol class="list-contain">
-                                <li>
-                                    <div class="soal card bg-light p-2 mb-4 ms-1" style="text-align: justify;">
 
-                                        Halo Dunia Halo DuniaHalo DuniaHalo DuniaHalo DuniaHalo DuniaHalo
-                                        DuniaHalo DuniaHalo DuniaHalo DuniaHalo DuniaHalo Dunia
+                                <?php foreach ($dataSoal['kuantitatif'] as $data) : ?>
+                                    <li class="mb-3">
+                                        <div class="soal card bg-light p-2 mb-4 ms-1" style="text-align: justify;">
 
-                                    </div>
-                                    <ol type="A" class="">
-                                        <li class="list-item-jawaban w-100">
-                                            <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault2" checked>
-                                            <label class="form-check-label" for="flexRadioDefault2">
-                                                Default checked radio
-                                            </label>
-                                        </li>
-                                        <li class="list-item-jawaban w-100"><input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault2" checked>
-                                            <label class="form-check-label" for="flexRadioDefault2">
-                                                Default checked radio
-                                            </label>
-                                        </li>
-                                        <li class="list-item-jawaban w-100"><input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault2" checked>
-                                            <label class="form-check-label" for="flexRadioDefault2">
-                                                Default checked radio
-                                            </label>
-                                        </li>
-                                        <li class="list-item-jawaban w-100"><input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault2" checked>
-                                            <label class="form-check-label" for="flexRadioDefault2">
-                                                Default checked radio
-                                            </label>
-                                        </li>
+                                            <?= $data['soal'] ?>
 
-                                    </ol>
+                                        </div>
+                                        <ol type="A" class="">
+                                            <li class="list-item-jawaban h-100 w-100">
+                                                <input class="form-check-input" type="radio" value="A" name="<?= $data['id'] ?>" >
+                                                    <?= $data['opsi_a'] ?>
+                                                <label class="form-check-label" for="input-jawaban">
+                                                </label>
+                                            </li>
+                                            <li class="list-item-jawaban h-100 w-100"><input class="form-check-input" type="radio" value="B" name="<?= $data['id'] ?>" >
+                                                    <?= $data['opsi_b'] ?>
+                                                <label class="form-check-label" for="input-jawaban">
+                                                </label>
+                                            </li>
+                                            <li class="list-item-jawaban h-100 w-100"><input class="form-check-input" type="radio" value="C" name="<?= $data['id'] ?>" >
+                                                    <?= $data['opsi_c'] ?>
+                                                <label class="form-check-label" for="input-jawaban">
+                                                </label>
+                                            </li>
+                                            <li class="list-item-jawaban h-100 w-100"><input class="form-check-input" type="radio" value="D" name="<?= $data['id'] ?>" >
+                                                    <?= $data['opsi_d'] ?>
+                                                <label class="form-check-label" for="input-jawaban">
+                                                </label>
+                                            </li>
 
-                                </li>
+                                        </ol>
+
+
+                                    </li>
+                                <?php endforeach; ?>
                             </ol>
+
+
+                            <?= form_close() ?>
                         </div>
                         <div class="carousel-item">
+                        <?= form_open('Soal/submit') ?>
+                            <?= csrf_field() ?>
                             <ol class="list-contain">
-                                <li>
-                                    <div class="soal card bg-light p-2 mb-4 ms-1" style="text-align: justify;">
 
-                                        Halo Dunia Halo DuniaHalo DuniaHalo DuniaHalo DuniaHalo DuniaHalo
-                                        DuniaHalo DuniaHalo DuniaHalo DuniaHalo DuniaHalo Dunia
+                                <?php foreach ($dataSoal['logika'] as $data) : ?>
+                                    <li class="mb-3">
+                                        <div class="soal card bg-light p-2 mb-4 ms-1" style="text-align: justify;">
 
-                                    </div>
-                                    <ol type="A" class="">
-                                        <li class="list-item-jawaban w-100">
-                                            <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault2" checked>
-                                            <label class="form-check-label" for="flexRadioDefault2">
-                                                Default checked radio
-                                            </label>
-                                        </li>
-                                        <li class="list-item-jawaban w-100"><input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault2" checked>
-                                            <label class="form-check-label" for="flexRadioDefault2">
-                                                Default checked radio
-                                            </label>
-                                        </li>
-                                        <li class="list-item-jawaban w-100"><input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault2" checked>
-                                            <label class="form-check-label" for="flexRadioDefault2">
-                                                Default checked radio
-                                            </label>
-                                        </li>
-                                        <li class="list-item-jawaban w-100"><input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault2" checked>
-                                            <label class="form-check-label" for="flexRadioDefault2">
-                                                Default checked radio
-                                            </label>
-                                        </li>
+                                            <?= $data['soal'] ?>
 
-                                    </ol>
+                                        </div>
+                                        <ol type="A" class="">
+                                            <li class="list-item-jawaban h-100 w-100">
+                                                <input class="form-check-input" type="radio" value="A" name="<?= $data['id'] ?>" >
+                                                    <?= $data['opsi_a'] ?>
+                                                <label class="form-check-label" for="input-jawaban">
+                                                </label>
+                                            </li>
+                                            <li class="list-item-jawaban h-100 w-100"><input class="form-check-input" type="radio" value="B" name="<?= $data['id'] ?>" >
+                                                    <?= $data['opsi_b'] ?>
+                                                <label class="form-check-label" for="input-jawaban">
+                                                </label>
+                                            </li>
+                                            <li class="list-item-jawaban h-100 w-100"><input class="form-check-input" type="radio" value="C" name="<?= $data['id'] ?>" >
+                                                    <?= $data['opsi_c'] ?>
+                                                <label class="form-check-label" for="input-jawaban">
+                                                </label>
+                                            </li>
+                                            <li class="list-item-jawaban h-100 w-100"><input class="form-check-input" type="radio" value="D" name="<?= $data['id'] ?>" >
+                                                    <?= $data['opsi_d'] ?>
+                                                <label class="form-check-label" for="input-jawaban">
+                                                </label>
+                                            </li>
 
-                                </li>
+                                        </ol>
+
+
+                                    </li>
+                                <?php endforeach; ?>
                             </ol>
+
+
+                            <?= form_close() ?>
                         </div>
                     </div>
                 </div>

@@ -107,7 +107,7 @@ class Test extends BaseController
 							else
 							{
 
-								$soal = $output[3];
+								$soal = $output[1].$output[3];
 							}
 
 						} 
@@ -164,4 +164,6 @@ class Test extends BaseController
 			echo 'gagal luar';
 		}
 	}
+
+	
 }

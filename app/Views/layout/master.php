@@ -181,13 +181,10 @@
     <!-- footer end -->
 
     <script src="<?= base_url('assets/node_modules/jquery/dist/jquery.min.js'); ?>"></script>
-    <script src="<?= base_url('public/js/screen.js'); ?>"></script>
     <script src="<?= base_url('public/js/bootstrap.min.js'); ?>"></script>
     <script src="<?= base_url('assets/node_modules/smooth-scrollbar/dist/smooth-scrollbar.js'); ?>"></script>
     <script src="<?= base_url('assets/node_modules/highlight.js/highlight.min.js') ?>"></script>
     <script type="text/javascript" src="<?= base_url('assets/data_table/datatables.min.js'); ?>"></script>
-    <script src="<?= base_url('assets/node_modules/katex/dist/katex.min.js'); ?>"></script>
-    <script src="<?= base_url('assets/node_modules/katex/contrib/auto-render/auto-render.js'); ?>" onload="renderMathInElement(document.body);"></script>
     <script src="<?= base_url('assets/node_modules/quill/dist/quill.js'); ?>"></script>
     <script src="<?= base_url('public/js/bootstrap.min.js'); ?>"></script>
     <script src="<?= base_url('assets/node_modules/sweetalert2/dist/sweetalert2.min.js') ?>"></script>

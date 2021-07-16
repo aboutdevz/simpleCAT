@@ -22,25 +22,25 @@
         <div class="col-8 d-flex border-end border-2">
             <img class="img-thumbnail" src="<?=imgAsset('appImg/person-icon.png')?>" alt="mahasiswa foto">
             <span class="d-inline align-self-center ms-5">
-                <h4>Nama</h4>
-                <h4>Nim</h4>
-                <h4>Jurusan</h4>
+                <h4>Nama    : Eva Siti Nurjanah</h4>
+                <h4>Nim     : 17185034</h4>
+                <h4>Jurusan : Sistem Informasi</h4>
             </span>
         </div>
         <div class="col-4 d-flex">
             <span class="ms-4 align-self-center">
-                <p class=" fw-bold">Verbal = skor</p>
-                <p class=" fw-bold">Kuantitatif = skor</p>
-                <p class=" fw-bold">Logika = skor</p>
+                <p class=" fw-bold">Verbal      = 620</p>
+                <p class=" fw-bold">Kuantitatif = 680</p>
+                <p class=" fw-bold">Logika      = 575</p>
             </span>
-            <span class="d-flex ms-5 align-self-center bg-primary text-center align-items-center justify-content-center rounded-circle text-white" style="width: 100px; height: 100px;">skor</span>
+            <span class="d-flex ms-5 align-self-center bg-primary text-center align-items-center justify-content-center rounded-circle text-white" style="width: 100px; height: 100px;"> <b>617</b> </span>
         </div>
     </div>
     <br>
     <div class="row text-center mt-5 mb-5">
         <p class="fs-4 ">Berdasarkan dari hasil skor Tes Potensi Akademik, maka anda disarankan untuk memilih program SCP</p>
         <br><br><br><br><br>
-        <h4 class="fw-bold">"Research / internship / student Exchange"</h4>
+        <h4 class="fw-bold">"Research Track"</h4>
     </div>
 </div>
 <?= $this->endSection('main'); ?>

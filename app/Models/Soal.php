@@ -3,6 +3,7 @@
 namespace App\Models;
 
 use CodeIgniter\Model;
+use PhpParser\Node\Expr\FuncCall;
 
 class Soal extends Model
 {
@@ -14,7 +15,7 @@ class Soal extends Model
 	protected $returnType           = 'array';
 	protected $useSoftDeletes       = false;
 	protected $protectFields        = true;
-	protected $allowedFields        = ['id_kategori','id_jenis','soal','opsi_a','opsi_b','opsi_c','opsi_d','jawaban','status'];
+	protected $allowedFields        = ['id_kategori', 'id_jenis', 'soal', 'opsi_a', 'opsi_b', 'opsi_c', 'opsi_d', 'jawaban', 'status'];
 
 	// Dates
 	protected $useTimestamps        = false;
@@ -44,31 +45,53 @@ class Soal extends Model
 	public function getSoal()
 	{
 		$query = $this->db->query("SELECT `tb_kategori`.`kategori`,`tb_jenis_soal`.`jenis_soal`,`tb_soal`.`id`,`soal`,`opsi_a`,`opsi_b`,`opsi_c`,`opsi_d`,`jawaban`,`status` FROM `tb_soal` INNER JOIN `tb_kategori` ON `tb_kategori`.`id` = `id_kategori` INNER JOIN `tb_jenis_soal` ON `tb_jenis_soal`.`id` = `id_jenis`");
-		
-		$rowCount = $query->getNumRows();
+		$query1 = $this->db->query("SELECT `tb_kategori`.`kategori`,`tb_jenis_soal`.`jenis_soal`,`tb_soal`.`id`,`soal`,`opsi_a`,`opsi_b`,`opsi_c`,`opsi_d`,`jawaban`,`status` FROM `tb_soal` INNER JOIN `tb_kategori` ON `tb_kategori`.`id` = `id_kategori` INNER JOIN `tb_jenis_soal` ON `tb_jenis_soal`.`id` = `id_jenis` WHERE `tb_kategori`.`kategori` = 'Verbal'");
+		$query2 = $this->db->query("SELECT `tb_kategori`.`kategori`,`tb_jenis_soal`.`jenis_soal`,`tb_soal`.`id`,`soal`,`opsi_a`,`opsi_b`,`opsi_c`,`opsi_d`,`jawaban`,`status` FROM `tb_soal` INNER JOIN `tb_kategori` ON `tb_kategori`.`id` = `id_kategori` INNER JOIN `tb_jenis_soal` ON `tb_jenis_soal`.`id` = `id_jenis` WHERE `tb_kategori`.`kategori` = 'Kuantitatif'");
+		$query3 = $this->db->query("SELECT `tb_kategori`.`kategori`,`tb_jenis_soal`.`jenis_soal`,`tb_soal`.`id`,`soal`,`opsi_a`,`opsi_b`,`opsi_c`,`opsi_d`,`jawaban`,`status` FROM `tb_soal` INNER JOIN `tb_kategori` ON `tb_kategori`.`id` = `id_kategori` INNER JOIN `tb_jenis_soal` ON `tb_jenis_soal`.`id` = `id_jenis` WHERE `tb_kategori`.`kategori` = 'Logika'");
 
-		if($rowCount > 0)
-		{
-			
-			$field = $query->getResultArray();
+
+		$rowCount = $query1->getNumRows();
+
+		if ($rowCount > 0) {
+
 			$data = [
-				'field' => $field,
+				'field' => [
+					'allSoal' => $query->getResultArray(),
+					'verbal' => $query1->getResultArray(),
+					'kuantitatif' => $query2->getResultArray(),
+					'logika' => $query3->getResultArray()
+				],
 				'status' => true
 			];
 			return $data;
-		}
-		else
-		{
+		} else {
 			$data = [
 				'field' => null,
 				'status' => false
 			];
 			return $data;
-			
 		}
-		
-		
 	}
+	public function getSingleSoal($id)
+	{
+		$query = $this->db->query("SELECT * FROM `tb_soal` WHERE `id` = $id");
+		$rowCount = $query->getNumRows();
 
+		if ($rowCount > 0) {
 
+			$field = json_encode($query->getRow());
+			$data = [
+				'field' => $field,
+				'status' => true
+			];
+			return $data;
+		} else {
+
+			$data = [
+				'field' => null,
+				'status' => false
+			];
+			return $data;
+		}
+	}
 }

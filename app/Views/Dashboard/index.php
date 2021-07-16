@@ -28,7 +28,7 @@
                         <p class="text-center display-4 mb-5">Daftar Mahasiswa</p>
                         <div class="btn-soal w-100 text-center mb-3">
                             <button class="btn bg-success">&uparrow; Import Data</button>
-                            <button id="dataMahasiswa" data-tipe="tambah" class="btn flex-grow-1 bg-primary" >&plus;
+                            <button  id="tambahDataMahasiswa" data-tipe="tambah" class="btn flex-grow-1 bg-primary dataMahasiswa" >&plus;
                                 Tambah Data Mahasiswa</button>
                             <button class="btn bg-info">&downarrow; Export Data</button>
                         </div>
@@ -63,15 +63,15 @@
                                             <td><?= $data['email']; ?></td>
                                             <td>
                                                 <div class="btn-group ">
-                                                    <button id="dataMahasiswa" data-tipe="update" data-id="<?=$data['id']?>" type="submit" class="btn bg-success">Update</button>
-                                                    <button id="hapus-mahasiswa" class="btn bg-danger" data-bs-dismiss="modal">Hapus</button>
+                                                    <button id="updateDataMahasiswa"  data-id="<?=$data['id']?>"  class="btn bg-success updateDataMahasiswa">Update</button>
+                                                    <button  class="btn bg-danger hapusDataMahasiswa" data-id="<?=$data['id']?>">Hapus</button>
                                                 </div>
                                             </td>
                                         </tr>
                                         <?php $no++; ?>
                                     <?php endforeach; ?>
                                     <?php else:?>
-                                    <td class="text-center" colspan="42">No Data</td>
+                                    <td class="text-center" colspan="7">No Data</td>
                                     <?php endif;?>
                                 </tbody>
                             </table>
@@ -85,7 +85,7 @@
                         <p class="text-center display-4 mb-5">Daftar Soal</p>
                         <div class="btn-soal w-100 text-center mb-3">
                             <button  data-bs-toggle="modal" data-bs-target="#import-modal" class="btn bg-success">&uparrow; Import Data</button>
-                            <button class="btn bg-primary" data-bs-toggle="modal" data-bs-target="#soal-modal">&plus;
+                            <button id="tambahDataSoal" class="btn bg-primary" data-bs-toggle="modal" data-bs-target="#soal-modal">&plus;
                                 Tambah Soal </button>
                             <button class="btn bg-info">&downarrow; Export Data</button>
                         </div>
@@ -129,8 +129,8 @@
                                             <td><?= $data['status'] ?></td>
                                             <td>
                                                 <div class="btn-group ">
-                                                    <button id="update-soal"  type="submit" class="btn bg-success">Update</button>
-                                                    <button id="hapus-soal" class="btn bg-danger" data-bs-dismiss="modal">Hapus</button>
+                                                    <button id="update-soal" data-id="<?=$data['id']?>" type="submit" class="btn bg-success updateDataSoal">Update</button>
+                                                    <button id="hapus-soal" class="btn bg-danger hapusDataSoal" data-id="<?=$data['id']?>">Hapus</button>
                                                 </div>
                                             </td>
                                         </tr>
@@ -151,9 +151,6 @@
 
                         <p class="text-center display-4 mb-5">Hasil TPA</p>
                         <div class="btn-soal w-100 text-center mb-3">
-                            <button class="btn bg-success">&uparrow; Import Data</button>
-                            <button class="btn bg-primary" data-bs-toggle="modal" data-bs-target="#tpa-modal">&plus;
-                                Tambah Data TPA</button>
                             <button class="btn bg-info">&downarrow; Export Data</button>
                         </div>
                         <div class="table-wrapper table-responsive">
@@ -173,30 +170,19 @@
                                 </thead>
 
                                 <tbody>
+                                    <?php $no=1;?>
+                                    <?php foreach($dataHasil as $data):?>
                                     <tr>
-                                        <td>Tiger Nixon</td>
-                                        <td>System Architect</td>
-                                        <td>Edinburgh</td>
-                                        <td>61</td>
-                                        <td>$320,800</td>
-                                        <td>$320,800</td>
+                                        <td><?=$no?></td>
+                                        <td><?=$data['nim']?></td>
+                                        <td><?=$data['nama_mhs']?></td>
+                                        <td>6 Juni 2021</td>
+                                        <td><?=$data['skor']?></td>
+                                        <td><?=$data['scp']?></td>
                                     </tr>
-                                    <tr>
-                                        <td>Garrett Winters</td>
-                                        <td>Accountant</td>
-                                        <td>Tokyo</td>
-                                        <td>63</td>
-                                        <td>2011/07/25</td>
-                                        <td>$170,750</td>
-                                    </tr>
-                                    <tr>
-                                        <td>Ashton Cox</td>
-                                        <td>Junior Technical Author</td>
-                                        <td>San Francisco</td>
-                                        <td>6</td>
-                                        <td>2009/01/12</td>
-                                        <td>$86,000</td>
-                                    </tr>
+                                    <?php $no++;?>
+                                    <?php endforeach;?>
+                                
                                 </tbody>
                             </table>
                         </div>
@@ -213,7 +199,7 @@
     <div class="modal-dialog">
         <div class="modal-content">
             <div class="modal-header bg-primary">
-                <h5 class="modal-title" id="#modal-mahasiswa-modalLabel">Tambah Data Mahasiswa</h5>
+                <h5 class="modal-title" id="modal-mahasiswa-modalLabel">Tambah Data Mahasiswa</h5>
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close" style="color: white;"></button>
             </div>
             <div class="modal-body">
@@ -252,9 +238,10 @@
                     <div class="form-group">
                         <label class="form-label" for=""><b>Program Studi</b> </label>
                         <select class="form-control" name="prodi" id="prodi">
-                            <option value="Perikanan" selected>Perikanan</option>
-                            <option value="Tataboga" selected>Tataboga</option>
-                            <option value="Komputer" selected>Komputer</option>
+                            <option value="0" selected>Pilih Program Studi</option>
+                            <option value="Sistem Informasi">Sistem informasi</option>
+                            <option value="Tataboga">Tataboga</option>
+                            <option value="Komputer">Komputer</option>
                         </select>
                         <span class="form-text">masukkan prodi anda</span>
                     </div>
@@ -302,7 +289,7 @@
                 </button>
             </div>
             <div class="modal-body">
-                <form action="" id="form-soal-tambah" enctype="multipart/form-data">
+                <form action="" id="formSoal" enctype="multipart/form-data">
                     <div class="form-group mt-3">
                         <label class="form-label" for="jenis-soal"><b>Jenis</b> </label>
                         <select class="form-select" name="jenis-soal" id="jenis-soal-input" required>

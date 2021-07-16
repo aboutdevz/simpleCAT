@@ -41,7 +41,31 @@ class Mahasiswa extends Model
 	protected $afterDelete          = [];
 
 
+	public function getMahasiswa($id)
+	{
+		$query = $this->db->query("SELECT * FROM tb_mahasiswa  WHERE `id` = $id LIMIT 1");
+		$rowCount = $query->getNumRows();
 
+			if ($rowCount > 0)
+			{
+				
+				$field = json_encode($query->getRow()) ;
+				$data = [
+					'field' => $field,
+					'status' => true
+				];
+				return $data;
+			}
+			else
+			{
+				
+				$data = [
+					'field' => null,
+					'status' => false
+				];
+				return $data;
+			}
+	}
 
 
 	public function getUser($username)

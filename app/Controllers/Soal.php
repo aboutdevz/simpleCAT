@@ -16,7 +16,11 @@ class Soal extends Controller
 
 		$data = [
 			'title' => 'soal',
-			'dataSoal' => $dataSoal['field']
+			'dataSoal' => [
+				'verbal' => $dataSoal['field']['verbal'],
+				'kuantitatif' => $dataSoal['field']['kuantitatif'],
+				'logika' => $dataSoal['field']['logika'],
+			]
 		];
 		return view('Soal/index',$data);
 	}

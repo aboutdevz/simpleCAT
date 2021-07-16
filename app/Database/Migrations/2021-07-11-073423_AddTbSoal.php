@@ -25,26 +25,26 @@ class AddTbSoal extends Migration
 			'null' => false
 		],
 		'paragraf' => [
-			'type' => 'text'
+			'type' => 'TEXT'
 			
 		],
 		'soal' => [
-			'type' => 'text'
+			'type' => 'LONGTEXT'
 		],
 		'opsi_a' => [
-			'type' => 'VARCHAR',
+			'type' => 'LONGTEXT',
 			'constraint' => 255
 		],
 		'opsi_b' => [
-			'type' => 'VARCHAR',
+			'type' => 'LONGTEXT',
 			'constraint' => 255
 		],
 		'opsi_c' => [
-			'type' => 'VARCHAR',
+			'type' => 'LONGTEXT',
 			'constraint' => 255
 		],
 		'opsi_d' => [
-			'type' => 'VARCHAR',
+			'type' => 'LONGTEXT',
 			'constraint' => 255
 		],
 		'jawaban' => [
