@@ -46,7 +46,6 @@ if( !$session->has('credential') ) $routes->get('Selesai/','Login::index');
 if( !$session->has('credential') ) $routes->get('Soal/','Login::index');
 
 
-if ( $session->credential['role'] == "admin" ) $routes->get('Home/','Dashboard::index');
 
 
 // if ( $session->credential['role'] == "mahasiswa" ) $routes->add('Login/','Home::index');
