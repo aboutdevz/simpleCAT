@@ -129,6 +129,6 @@ nb-configuration.xml
 node_modules
 
 #app data
-
+assets/
 
 
