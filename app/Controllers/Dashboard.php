@@ -21,7 +21,7 @@ class Dashboard extends Controller
 				'kategoriform' => $Kategori,
 				'jenisform' => $jenis,
 				'dataMahasiswa' => $dataMahasiswa,
-				'dataSoal' => $dataSoal['field']['allSoal'],
+				'dataSoal' =>  (!empty($dataSoal['field']['allSoal'])) ? ($dataSoal['field']['allSoal']) : (null),
 				'dataHasil' => $dataHasil['field']
 
 			];

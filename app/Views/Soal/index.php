@@ -32,7 +32,7 @@
                             <?= form_open('Soal/submit') ?>
                             <?= csrf_field() ?>
                             <ol class="list-contain">
-
+                                
                                 <?php foreach ($dataSoal['verbal'] as $data) : ?>
                                     <li class="mb-3">
                                         <div class="soal card bg-light p-2 mb-4 ms-1" style="text-align: justify;">
