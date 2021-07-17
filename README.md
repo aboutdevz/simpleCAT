@@ -16,5 +16,5 @@ Usage
 
 - download zip / clone repo
 - paste in htdocs
-- run localhost in xampp
+- run php spark serve on root project
 
