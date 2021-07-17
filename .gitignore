@@ -126,9 +126,9 @@ nb-configuration.xml
 /.phpunit.*.cache
 
 #extension
-node_modules
+
 
 #app data
-assets/
+
 
 
