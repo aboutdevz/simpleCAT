@@ -4,10 +4,7 @@
 
 Instalation
 ------------
-```sh
-npm install
 
-```
 ```sh
 composer install
 ```
