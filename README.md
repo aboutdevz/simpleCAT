@@ -15,6 +15,7 @@ Usage
 ------------
 
 - download zip / clone repo
-- paste in htdocs
+- make db name exam
+- import db.sql
 - run php spark serve on root project
 
