@@ -735,7 +735,7 @@ $(function () {
   if (carouselAt == 1) {
     timer = new easytimer.Timer();
     $(".title-soal").html("Soal Verbal");
-    timer.start({ countdown: true, startValues: { minutes: 1 } });
+    timer.start({ countdown: true, startValues: { minutes: 25 } });
     timer.addEventListener("secondsUpdated", function (e) {
       $(".timer").html(timer.getTimeValues().toString());
     });
@@ -747,7 +747,7 @@ $(function () {
   if (carouselAt == 2) {
       timer = new easytimer.Timer();
       $(".title-soal").html("Soal Kuantitatif");
-      timer.start({ countdown: true, startValues: { minutes: 1 } });
+      timer.start({ countdown: true, startValues: { minutes: 35 } });
       timer.addEventListener("secondsUpdated", function (e) {
         $(".timer").html(timer.getTimeValues().toString());
       });
@@ -758,7 +758,7 @@ $(function () {
     } else if (carouselAt == 3) {
       timer =new easytimer.Timer();
       $(".title-soal").html("Soal Logika");
-      timer.start({ countdown: true, startValues: { minutes: 1 } });
+      timer.start({ countdown: true, startValues: { minutes: 30 } });
       timer.addEventListener("secondsUpdated", function (e) {
         $(".timer").html(timer.getTimeValues().toString());
       });
@@ -773,7 +773,7 @@ $(function () {
     if (carouselAt == 2) {
       timer = new easytimer.Timer();
       $(".title-soal").html("Soal Kuantitatif");
-      timer.start({ countdown: true, startValues: { minutes: 1 } });
+      timer.start({ countdown: true, startValues: { minutes: 35 } });
       timer.addEventListener("secondsUpdated", function (e) {
         $(".timer").html(timer.getTimeValues().toString());
       });
@@ -784,7 +784,7 @@ $(function () {
     } else if (carouselAt == 3) {
       timer =new easytimer.Timer();
       $(".title-soal").html("Soal Logika");
-      timer.start({ countdown: true, startValues: { minutes: 1 } });
+      timer.start({ countdown: true, startValues: { minutes: 30 } });
       timer.addEventListener("secondsUpdated", function (e) {
         $(".timer").html(timer.getTimeValues().toString());
       });
