@@ -162,7 +162,7 @@ class Dashboard extends Controller
 				if ($files > 0) {
 					$file = $this->request->getFile('profile');
 					$data['foto'] = imgAsset('profil/' . $file->getName());
-					$file->move(ROOTPATH . 'assets/img/profil');
+					$file->move(ROOTPATH . 'public/assets/img/profil');
 				}
 				
 				try {

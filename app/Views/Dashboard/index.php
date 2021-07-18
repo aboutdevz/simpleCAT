@@ -27,10 +27,10 @@
 
                         <p class="text-center display-4 mb-5">Daftar Mahasiswa</p>
                         <div class="btn-soal w-100 text-center mb-3">
-                            <button class="btn bg-success">&uparrow; Import Data</button>
+                            <!-- <button class="btn bg-success">&uparrow; Import Data</button> -->
                             <button  id="tambahDataMahasiswa" data-tipe="tambah" class="btn flex-grow-1 bg-primary dataMahasiswa" >&plus;
                                 Tambah Data Mahasiswa</button>
-                            <button class="btn bg-info">&downarrow; Export Data</button>
+                            <!-- <button class="btn bg-info">&downarrow; Export Data</button> -->
                         </div>
                         <div class="table-wrapper table-responsive">
 
@@ -87,7 +87,7 @@
                             <button  data-bs-toggle="modal" data-bs-target="#import-modal" class="btn bg-success">&uparrow; Import Data</button>
                             <button id="tambahDataSoal" class="btn bg-primary" data-bs-toggle="modal" data-bs-target="#soal-modal">&plus;
                                 Tambah Soal </button>
-                            <button class="btn bg-info">&downarrow; Export Data</button>
+                            <!-- <button class="btn bg-info">&downarrow; Export Data</button> -->
                         </div>
                         <div class="table-wrapper table-responsive">
 
@@ -151,7 +151,7 @@
 
                         <p class="text-center display-4 mb-5">Hasil TPA</p>
                         <div class="btn-soal w-100 text-center mb-3">
-                            <button class="btn bg-info">&downarrow; Export Data</button>
+                            <!-- <button class="btn bg-info">&downarrow; Export Data</button> -->
                         </div>
                         <div class="table-wrapper table-responsive">
 

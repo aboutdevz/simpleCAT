@@ -1,5 +1,5 @@
 <!doctype html>
-<html lang="en">
+<html lang="en" id="rootHtml">
 
 <head>
     <meta charset="UTF-8">
@@ -8,9 +8,8 @@
     <link rel="stylesheet" href="<?= base_url('css/bootstrap.min.css'); ?>">
     <link href="<?= base_url('assets/node_modules/quill/dist/quill.core.css') ?>" rel="stylesheet">
     <link rel="stylesheet" href="<?= base_url('assets/node_modules/quill/dist/quill.snow.css') ?>">
-    <link rel="stylesheet" href="<?= base_url('assets/node_modules/quill/dist/quill.bubble.css') ?>">
+    
     <link rel="stylesheet" type="text/css" href="<?= base_url('assets/data_table/datatables.min.css') ?>" />
-    <link rel="stylesheet" href="<?= base_url('assets/node_modules/katex/dist/katex.min.css') ?>">
 
     <link rel="stylesheet" href="<?= base_url('assets/node_modules/sweetalert2/dist/sweetalert2.min.css') ?>">
     <link rel="stylesheet" href="<?= base_url('css/style.css'); ?>">
@@ -140,14 +139,7 @@
             </button>
             <div class="collapse navbar-collapse" id="navbarSupportedContent">
                 <ul class="navbar-nav w-100 mb-2 justify-content-end mb-lg-0 dropstart">
-                    <!-- <ul class="dropdown-menu" aria-labelledby="navbarDropdown" >
-                            <li><a class="dropdown-item" href="#">Action</a></li>
-                            <li><a class="dropdown-item" href="#">Another action</a></li>
-                            <li>
-                                <hr class="dropdown-divider">
-                            </li>
-                            <li><a class="dropdown-item" href="#">Something else here</a></li>
-                        </ul> -->
+                   
                     <?= $this->renderSection('navItem'); ?>
                     </li>
 
@@ -180,6 +172,10 @@
     </footer>
     <!-- footer end -->
 
+
+
+    
+
     <script src="<?= base_url('assets/node_modules/jquery/dist/jquery.min.js'); ?>"></script>
     <script src="<?= base_url('js/bootstrap.min.js'); ?>"></script>
     <script src="<?= base_url('assets/node_modules/smooth-scrollbar/dist/smooth-scrollbar.js'); ?>"></script>
@@ -187,6 +183,7 @@
     <script type="text/javascript" src="<?= base_url('assets/data_table/datatables.min.js'); ?>"></script>
     <script src="<?= base_url('assets/node_modules/quill/dist/quill.js'); ?>"></script>
     <script src="<?= base_url('js/bootstrap.min.js'); ?>"></script>
+    <script src="<?= base_url('assets/node_modules/timerjs/dist/easytimer.min.js') ?>"></script>
     <script src="<?= base_url('assets/node_modules/sweetalert2/dist/sweetalert2.min.js') ?>"></script>
     <script src="<?= base_url('js/script.js'); ?>"></script>
     <script src="<?= base_url('js/quillsetup.js'); ?>"></script>

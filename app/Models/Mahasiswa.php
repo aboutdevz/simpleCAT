@@ -14,7 +14,7 @@ class Mahasiswa extends Model
 	protected $returnType           = 'array';
 	protected $useSoftDeletes       = false;
 	protected $protectFields        = true;
-	protected $allowedFields        = ['id','id_role','nim','nama_mhs','password','ttl','jenis_kelamin','prodi','email','no_hp','foto'];
+	protected $allowedFields        = ['id','nama_mhs','id_role','nim','nama_mhs','password','ttl','jenis_kelamin','prodi','email','no_hp','foto'];
 
 	// Dates
 	protected $useTimestamps        = false;
@@ -71,7 +71,7 @@ class Mahasiswa extends Model
 	public function getUser($username)
 	{
 
-			$query = $this->db->query("SELECT * FROM tb_mahasiswa INNER JOIN `role` ON `role`.`id` = `tb_mahasiswa`.`id_role` WHERE `nim` = $username LIMIT 1");
+			$query = $this->db->query("SELECT `tb_mahasiswa`.`id`,`tb_mahasiswa`.`nama_mhs`,`tb_mahasiswa`.`password`,`tb_mahasiswa`.`nim`,`role`.`role_name`,`tb_mahasiswa`.`ttl`,`tb_mahasiswa`.`jenis_kelamin`,`tb_mahasiswa`.`prodi`,`tb_mahasiswa`.`email`,`tb_mahasiswa`.`no_hp`,`tb_mahasiswa`.`foto` FROM tb_mahasiswa INNER JOIN `role` ON `role`.`id` = `tb_mahasiswa`.`id_role` WHERE `nim` = $username LIMIT 1");
 		
 			$rowCount = $query->getNumRows();
 

@@ -132,3 +132,8 @@ body
 
 
 
+.bg-secondary
+{
+    color: black !important;
+    background-color: rgb(223, 201, 213) !important;
+}

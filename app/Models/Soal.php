@@ -15,7 +15,7 @@ class Soal extends Model
 	protected $returnType           = 'array';
 	protected $useSoftDeletes       = false;
 	protected $protectFields        = true;
-	protected $allowedFields        = ['id_kategori', 'id_jenis', 'soal', 'opsi_a', 'opsi_b', 'opsi_c', 'opsi_d', 'jawaban', 'status'];
+	protected $allowedFields        = ['id','id_kategori', 'id_jenis', 'soal', 'opsi_a', 'opsi_b', 'opsi_c', 'opsi_d', 'jawaban', 'status'];
 
 	// Dates
 	protected $useTimestamps        = false;
@@ -60,6 +60,7 @@ class Soal extends Model
 					'verbal' => $query1->getResultArray(),
 					'kuantitatif' => $query2->getResultArray(),
 					'logika' => $query3->getResultArray()
+					
 				],
 				'status' => true
 			];
@@ -72,6 +73,14 @@ class Soal extends Model
 			return $data;
 		}
 	}
+
+	public function getJawabanSoal()
+	{
+		$queryJ = $this->db->query("SELECT `id`,`jawaban` FROM `tb_soal` ");
+
+		return json_encode($queryJ->getResultArray());
+	}
+
 	public function getSingleSoal($id)
 	{
 		$query = $this->db->query("SELECT * FROM `tb_soal` WHERE `id` = $id");
@@ -82,6 +91,7 @@ class Soal extends Model
 			$field = json_encode($query->getRow());
 			$data = [
 				'field' => $field,
+				'arrayField' => $query->getRowArray(),
 				'status' => true
 			];
 			return $data;
@@ -94,4 +104,5 @@ class Soal extends Model
 			return $data;
 		}
 	}
+
 }

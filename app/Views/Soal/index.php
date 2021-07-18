@@ -1,3 +1,9 @@
+<?php
+
+$session = \Config\Services::session();
+$dataMhs = $session->credential['dataMhs'];
+?>
+
 <?= $this->extend('layout/master.php') ?>
 
 <?= $this->section('main'); ?>
@@ -13,7 +19,7 @@
                     <small class="title-soal word-wrap fs-3 fw-light w-100 p-lg-4">Soal Logika </small>
                 </div>
                 <div class="col-1">
-                    <small class="fw-bold">Soal Logika </small>
+                    <small class="fw-bold timer">Soal Logika </small>
 
                 </div>
             </div>
@@ -31,11 +37,11 @@
                         <div class="carousel-item active">
                             <?= form_open('Soal/submit') ?>
                             <?= csrf_field() ?>
-                            <ol class="list-contain">
-                                
+                            <ol class="list-contain soalVerbal">
+                                <?php if (!empty($dataSoal['verbal'])) :?>
                                 <?php foreach ($dataSoal['verbal'] as $data) : ?>
                                     <li class="mb-3">
-                                        <div class="soal card bg-light p-2 mb-4 ms-1" style="text-align: justify;">
+                                        <div class="soal card bg-secondary p-2 mb-4 ms-1" style="text-align: justify;">
 
                                             <?= $data['soal'] ?>
 
@@ -68,6 +74,9 @@
 
                                     </li>
                                 <?php endforeach; ?>
+                                <?php else:?>
+                                    <h3 class="text-center">No data</h3>
+                                <?php endif;?>
                             </ol>
 
 
@@ -76,8 +85,8 @@
                         <div class="carousel-item">
                         <?= form_open('Soal/submit') ?>
                             <?= csrf_field() ?>
-                            <ol class="list-contain">
-
+                            <ol class="list-contain soalKuantitatif">
+                                <?php if (!empty($dataSoal['kuantitatif'])) :?>
                                 <?php foreach ($dataSoal['kuantitatif'] as $data) : ?>
                                     <li class="mb-3">
                                         <div class="soal card bg-light p-2 mb-4 ms-1" style="text-align: justify;">
@@ -113,6 +122,9 @@
 
                                     </li>
                                 <?php endforeach; ?>
+                                <?php else:?>
+                                    <h3 class="text-center">No Data</h3>
+                                <?php endif;?>
                             </ol>
 
 
@@ -121,8 +133,8 @@
                         <div class="carousel-item">
                         <?= form_open('Soal/submit') ?>
                             <?= csrf_field() ?>
-                            <ol class="list-contain">
-
+                            <ol class="list-contain soalLogika">
+                                <?php if(!empty($dataSoal['logika'])) :?>
                                 <?php foreach ($dataSoal['logika'] as $data) : ?>
                                     <li class="mb-3">
                                         <div class="soal card bg-light p-2 mb-4 ms-1" style="text-align: justify;">
@@ -159,7 +171,9 @@
                                     </li>
                                 <?php endforeach; ?>
                             </ol>
-
+                            <?php else:?>
+                                <h3 class="text-center">No Data</h3>
+                            <?php endif;?>
 
                             <?= form_close() ?>
                         </div>
@@ -177,4 +191,49 @@
     </div>
 </div>
 
+<!-- modal start  -->
+
+<div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1"
+        aria-labelledby="staticBackdropLabel" aria-hidden="true">
+        <div class="modal-dialog modal-lg">
+            <div class="modal-content ">
+                <div class="modal-header bg-primary">
+                    <h5 class="modal-title" id="staticBackdropLabel">Detail Profil Mahasiswa</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close" style="color: white;"></button>
+                </div>
+                <div class="modal-body p-4">
+                    <img class="rounded-3 position-absolute" src="<?=$dataMhs->foto?>" alt="" height="auto" width="150">
+                    <div class="row" style="margin-left: 12em;">
+                        <div class="col-4 ">
+                            
+                            <p>NIM</p>
+                            <p>Nama Lengkap</p>
+                            <p>Jenis Kelamin</p>
+                            <p>Program Studi</p>
+                            <p>Tanggal Lahir</p>
+                            <p>Email</p>
+                            <p>No. Handphone</p>
+                        </div>
+                        <div class="col-8 ">
+                            <p>:<?=" ".$dataMhs->nim?></p>
+                            <p>:<?=" ".$dataMhs->nama_mhs?> </p>
+                            <p>:<?=" ". ($dataMhs->jenis_kelamin == "P") ? (' Perempuan') : (' Laki-Laki') ?></p>
+                            <p>:<?=" ".$dataMhs->prodi?></p>
+                            <p>:<?=" ".$dataMhs->ttl?></p>
+                            <p>:<?=" ".$dataMhs->email?></p>
+                            <p>:<?=" ".$dataMhs->no_hp?></p>
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <div class="btn-group w-100 justify-content-end">
+                        <button class="btn bg-danger" data-bs-dismiss="modal">Tutup</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+    <!-- model end  -->
 <?= $this->endSection(); ?>

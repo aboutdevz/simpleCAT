@@ -21,6 +21,7 @@ class Home extends BaseController
 		}
 		else
 		{
+		
 			return redirect()->to(base_url('Dashboard'));
 		}
 	}

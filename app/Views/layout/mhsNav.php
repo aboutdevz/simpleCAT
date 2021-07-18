@@ -7,8 +7,8 @@
         Peserta
     </a>
     <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-        <li><a class="dropdown-item" href="#">Profil</a></li>
-        <li><a class="dropdown-item" href="#">Another action</a></li>
+        <li><button class="dropdown-item" type="button" data-bs-toggle="modal" data-bs-target="#staticBackdrop">Profil</button></li>
+        
         <li>
             <hr class="dropdown-divider">
         </li>

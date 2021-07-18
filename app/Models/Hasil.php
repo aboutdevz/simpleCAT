@@ -14,7 +14,7 @@ class Hasil extends Model
 	protected $returnType           = 'array';
 	protected $useSoftDeletes       = false;
 	protected $protectFields        = true;
-	protected $allowedFields        = [];
+	protected $allowedFields        = ['id','id_mahasiswa','jawaban','verbal','kuantitatif','logika','skor','scp'];
 
 	// Dates
 	protected $useTimestamps        = false;
@@ -62,4 +62,30 @@ class Hasil extends Model
 			return $data;
 		}
 	}
+
+
+	public function adaHasil($idMahasiswa)
+	{
+		$query = $this->db->query("SELECT * FROM `tb_hasil` WHERE `id_mahasiswa` = $idMahasiswa LIMIT 1");
+		$rowCount = $query->getNumRows();
+
+		if ($rowCount > 0) {
+
+			$field = $query->getRowArray();
+			$data = [
+				'id' => $field['id'],
+				'status' => true
+			];
+			return $data;
+		} else {
+
+			$data = [
+				'field' => null,
+				'status' => false
+			];
+			return $data;
+		}
+	}
+
+
 }

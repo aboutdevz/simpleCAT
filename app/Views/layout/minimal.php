@@ -1,5 +1,11 @@
+<?php
+
+$session = \Config\Services::session();
+$dataMhs = $session->credential['dataMhs'];
+?>
+
 <!doctype html>
-<html lang="en">
+<html lang="en" id="rootHtml">
 
 <head>
     <meta charset="UTF-8">
@@ -18,6 +24,9 @@
 
 
     </div>
+    
+    
+
     <script src="<?=base_url('js/bootstrap.min.js');?>"></script>
 </body>
 

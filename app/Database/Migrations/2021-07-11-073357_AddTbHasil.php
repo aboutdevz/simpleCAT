@@ -20,6 +20,22 @@ class AddTbHasil extends Migration
 			'type' => 'TEXT'
 			
 		],
+		
+		'verbal' => [
+			'type' => 'VARCHAR',
+			'constraint' => 255
+			
+		],
+		'kuantitatif' => [
+			'type' => 'VARCHAR',
+			'constraint' => 255
+			
+		],
+		'logika' => [
+			'type' => 'VARCHAR',
+			'constraint' => 255
+			
+		],
 		'skor' => [
 			'type' => 'VARCHAR',
 			'constraint' => 255
