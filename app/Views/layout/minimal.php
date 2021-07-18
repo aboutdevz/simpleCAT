@@ -1,8 +1,4 @@
-<?php
 
-$session = \Config\Services::session();
-$dataMhs = $session->credential['dataMhs'];
-?>
 
 <!doctype html>
 <html lang="en" id="rootHtml">
