@@ -24,7 +24,7 @@ class Login extends Controller
 
 	public function auth()
 	{
-
+		$session = \Config\Services::session();
 
 		$username = $this->request->getPost('username');
 		$password = $this->request->getPost('password');
@@ -33,11 +33,13 @@ class Login extends Controller
 
 		if ($loginState)
 		{
+			
 			return redirect()->to(base_url('Home'));
 		}
 		else
 		{
-			return redirect()->to(base_url('Soal'));
+			$session->setFlashdata('salahAkun',true);
+			return redirect()->to(base_url('Login'));
 		}
 	}
 

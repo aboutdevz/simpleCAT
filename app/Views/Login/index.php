@@ -1,3 +1,5 @@
+<?php $session = \Config\Services::session();?>
+
 <?= $this->extend('layout/minimal'); ?>
 
 
@@ -9,6 +11,9 @@
         <div class="card  p-5 border-0 rounded-3 shadow-lg" style="max-width: 800px;">
             <img src="<?= imgAsset('appImg/fav.png') ?>" alt="person" class="mx-auto" width="100px" height="auto">
             <h1 class="text-center card-title">Login</h1>
+            <?php if ($session->getFlashdata('salahAkun') !== null) :?>
+            <p class="text-white text-center p-3 bg-danger"> Password / Username Salah <br> Silahkan Coba Lagi</p>
+            <?php endif;?>
             <?= form_open('Login/auth') ?> <div class="mb-3">
                 <?= csrf_field() ?>
                 <label class="form-label">Username</label>

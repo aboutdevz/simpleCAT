@@ -13,6 +13,9 @@
 
     <link rel="stylesheet" href="<?= base_url('assets/node_modules/sweetalert2/dist/sweetalert2.min.css') ?>">
     <link rel="stylesheet" href="<?= base_url('css/style.css'); ?>">
+    <script src="<?= base_url('assets/node_modules/jquery/dist/jquery.min.js'); ?>"></script>
+    <script src="<?= base_url('js/bootstrap.min.js'); ?>"></script>
+    <script type="text/javascript" src="<?= base_url('assets/data_table/datatables.min.js'); ?>"></script>
 
     <style>
         .loaderContainer {
@@ -176,11 +179,8 @@
 
     
 
-    <script src="<?= base_url('assets/node_modules/jquery/dist/jquery.min.js'); ?>"></script>
-    <script src="<?= base_url('js/bootstrap.min.js'); ?>"></script>
     <script src="<?= base_url('assets/node_modules/smooth-scrollbar/dist/smooth-scrollbar.js'); ?>"></script>
     <script src="<?= base_url('assets/node_modules/highlight.js/highlight.min.js') ?>"></script>
-    <script type="text/javascript" src="<?= base_url('assets/data_table/datatables.min.js'); ?>"></script>
     <script src="<?= base_url('assets/node_modules/quill/dist/quill.js'); ?>"></script>
     <script src="<?= base_url('js/bootstrap.min.js'); ?>"></script>
     <script src="<?= base_url('assets/node_modules/timerjs/dist/easytimer.min.js') ?>"></script>

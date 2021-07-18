@@ -519,5 +519,5 @@
 
 
     <!-- model end  -->
-
+<script src="js/admin.js"></script>
 <?= $this->endSection('main'); ?>
