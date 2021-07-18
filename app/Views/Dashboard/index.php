@@ -46,6 +46,10 @@
                                         <th>Program Studi</th>
                                         <th>Email</th>
                                         <th>Action</th>
+                                        <th style="display: none;">Action</th>
+                                        <th style="display: none;">Action</th>
+                                        <th style="display: none;">Action</th>
+                                        
                                     </tr>
                                 </thead>
 
@@ -58,15 +62,18 @@
                                             <td><?= $no ?></td>
                                             <td><?= $data['nim']; ?></td>
                                             <td><?= $data['nama_mhs']; ?></td>
-                                            <td><?= $data['jenis_kelamin']; ?></td>
+                                            <td><?= ($data['jenis_kelamin'] == "P") ? ('Perempuan') : ('Laki-Laki')   ?></td>
                                             <td><?= $data['prodi']; ?></td>
                                             <td><?= $data['email']; ?></td>
-                                            <td>
+                                            <td id="action">
                                                 <div class="btn-group ">
                                                     <button id="updateDataMahasiswa"  data-id="<?=$data['id']?>"  class="btn bg-success updateDataMahasiswa">Update</button>
                                                     <button  class="btn bg-danger hapusDataMahasiswa" data-id="<?=$data['id']?>">Hapus</button>
                                                 </div>
                                             </td>
+                                            <td style="display:none;"><?= $data['ttl']; ?></td>
+                                            <td style="display:none;"><?= $data['no_hp']; ?></td>
+                                            <td style="display:none;"><?= $data['foto']; ?></td>
                                         </tr>
                                         <?php $no++; ?>
                                     <?php endforeach; ?>
@@ -318,7 +325,7 @@
                         <label class="form-label" for="soal-container"><b>Soal</b> </label>
 
                         <div class="ql-editor" id="soal-container">
-                            
+                            <small>Masukkan Disini</small>
 
                         </div>
                         <span class="form-text">Tulislah Soal</span>
@@ -329,8 +336,7 @@
                         <input type="hidden" name="opsiA" id="opsiA">
                         <label class="form-label" for="opsiA"><b>Opsi A</b> </label>
                         <div class="ql-editor" id="opsiA-container">
-                            
-
+                        <small>Masukkan Disini</small>
                         </div>
                         <span class="form-text">Masukkan Opsi A</span>
                     </div>
@@ -340,7 +346,7 @@
                         <label class="form-label" for="opsiB"><b>Opsi B</b> </label>
                         <div class="ql-editor" id="opsiB-container">
                             
-
+                        <small>Masukkan Disini</small>
                         </div>
                         <span class="form-text">Masukkan Opsi B</span>
                     </div>
@@ -348,7 +354,7 @@
                         <input type="hidden" name="opsiC" id="opsiC">
                         <label class="form-label" for="opsiC"><b>Opsi C</b> </label>
                         <div class="ql-editor" id="opsiC-container">
-                            
+                        <small>Masukkan Disini</small>
 
                         </div>
                         <span class="form-text">Masukkan Opsi C</span>
@@ -357,7 +363,7 @@
                         <input type="hidden" name="opsiD" id="opsiD">
                         <label class="form-label" for="opsiD"><b>Opsi D</b> </label>
                         <div class="ql-editor" id="opsiD-container">
-                            
+                        <small>Masukkan Disini</small>
                         </div>
                         <span class="form-text">Masukkan Opsi D</span>
                     </div>
@@ -467,5 +473,51 @@
     </div>
 </div>
 <!-- modal end  -->
+
+
+
+<div class="modal fade" id="profilModalDash" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1"
+        aria-labelledby="staticBackdropLabel" aria-hidden="true">
+        <div class="modal-dialog modal-lg">
+            <div class="modal-content ">
+                <div class="modal-header bg-primary">
+                    <h5 class="modal-title" id="staticBackdropLabel">Detail Profil Mahasiswa</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close" style="color: white;"></button>
+                </div>
+                <div class="modal-body p-4">
+                    <img class="rounded-3 position-absolute fotoPDash"  alt="" height="auto" width="150">
+                    <div class="row" style="margin-left: 12em;">
+                        <div class="col-4 ">
+                            
+                            <p>NIM</p>
+                            <p>Nama Lengkap</p>
+                            <p>Jenis Kelamin</p>
+                            <p>Program Studi</p>
+                            <p>Tanggal Lahir</p>
+                            <p>Email</p>
+                            <p>No. Handphone</p>
+                        </div>
+                        <div class="col-8 ">
+                            <p class="nimPDash"></p>
+                            <p class="namaPDash"> </p>
+                            <p class="JkPDash"></p>
+                            <p class="prodiPDash"></p>
+                            <p class="ttlPDash"></p>
+                            <p class="emailPDash"></p>
+                            <p class="hpPDash"></p>
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <div class="btn-group w-100 justify-content-end">
+                        <button class="btn bg-danger" data-bs-dismiss="modal">Tutup</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+    <!-- model end  -->
 
 <?= $this->endSection('main'); ?>

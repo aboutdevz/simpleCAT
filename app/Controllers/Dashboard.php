@@ -92,6 +92,7 @@ class Dashboard extends Controller
 			$modelSoal->save($dataPost);
 		} catch (\Exception $th) {
 			throw $th;
+			echo $th;
 		}
 	}
 
@@ -108,13 +109,15 @@ class Dashboard extends Controller
 				if ($files > 0) {
 					$file = $this->request->getFile('profile');
 					$data['foto'] = imgAsset('profil/' . $file->getName());
-					$file->move(ROOTPATH . 'public/image/profil');
+					$file->move(ROOTPATH . 'public/assets/img/profil');
 				}
 				if ($data['kelamin'] == "L") {
 					$data['kelamin'] = "Laki-Laki";
 				} else {
 					$data['kelamin'] = "Perempuan";
 				}
+				$dateTemp = strtotime($data['ttl']);
+				$data['ttl']  = date('d F Y',$dateTemp);
 				try {
 					//code...
 					$modelMhs->save($data);
@@ -164,7 +167,13 @@ class Dashboard extends Controller
 					$data['foto'] = imgAsset('profil/' . $file->getName());
 					$file->move(ROOTPATH . 'public/assets/img/profil');
 				}
-				
+				if ($data['jenis_kelamin'] == "L") {
+					$data['jenis_kelamin'] = "Laki-Laki";
+				} else {
+					$data['jenis_kelamin'] = "Perempuan";
+				}
+				$dateTemp = strtotime($data['ttl']);
+				$data['ttl']  = date('d F Y',$dateTemp);
 				try {
 					//code...
 					$modelMhs->save($data);
@@ -180,13 +189,23 @@ class Dashboard extends Controller
 	public function hapusMahasiswa()
 	{
 		$id = $this->request->getPost('id');
+		$modelHasil = model('Hasil');
 		$modelMhs = model('Mahasiswa');
-
 		try {
-			$modelMhs->delete($id);
+			//code...
+			if ($modelHasil->deleteCascade($id))
+		{
+			try {
+				$modelMhs->delete($id);
+			} catch (\Exception $th) {
+				throw $th;
+			}
+
+		}
 		} catch (\Exception $th) {
 			throw $th;
 		}
+		
 	}
 
 }

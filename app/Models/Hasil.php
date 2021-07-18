@@ -87,5 +87,19 @@ class Hasil extends Model
 		}
 	}
 
+	public function deleteCascade($id)
+	{
+		$query = $this->db->query("DELETE FROM `tb_hasil` WHERE `id_mahasiswa` = $id");
+
+		if ($this->db->affectedRows() > 0)
+		{
+			return true;
+		}
+		else
+		{
+			return false;
+		}
+	}
+
 
 }

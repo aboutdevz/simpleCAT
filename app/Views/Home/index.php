@@ -76,7 +76,7 @@ $dataMhs = $session->credential['dataMhs'];
                         <div class="col-8 ">
                             <p>:<?=" ".$dataMhs->nim?></p>
                             <p>:<?=" ".$dataMhs->nama_mhs?> </p>
-                            <p>:<?=" ".$dataMhs->jenis_kelamin?></p>
+                            <p>:<?=" ".($dataMhs->jenis_kelamin == "P") ? (' Perempuan') : (' Laki-Laki') ?></p>
                             <p>:<?=" ".$dataMhs->prodi?></p>
                             <p>:<?=" ".$dataMhs->ttl?></p>
                             <p>:<?=" ".$dataMhs->email?></p>

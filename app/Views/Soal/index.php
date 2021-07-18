@@ -24,7 +24,7 @@ $dataMhs = $session->credential['dataMhs'];
                 </div>
             </div>
         </div>
-        <div class="card m " style="min-height: 80vh; max-height: 80vh;" data-scrollbar="true">
+        <div class="card cardSoal " style="min-height: 80vh; max-height: 80vh;" id="cardSoal" >
 
 
             <div class="card-body bg-white ps-0 p-lg-3 ">
@@ -38,8 +38,89 @@ $dataMhs = $session->credential['dataMhs'];
                             <?= form_open('Soal/submit') ?>
                             <?= csrf_field() ?>
                             <ol class="list-contain soalVerbal">
-                                <?php if (!empty($dataSoal['verbal'])) :?>
-                                <?php foreach ($dataSoal['verbal'] as $data) : ?>
+                                <?php if (!empty($dataSoal['sinonim'])) :?>
+                                    <h5 class="m-3 m-lg-5 mt-5">A. Sinonim</h5>
+                                <?php foreach ($dataSoal['sinonim'] as $data) : ?>
+                                    <li class="mb-3">
+                                        <div class="soal card bg-secondary p-2 mb-4 ms-1" style="text-align: justify;">
+
+                                            <?= $data['soal'] ?>
+
+                                        </div>
+                                        <ol type="A" class="">
+                                            <li class="list-item-jawaban h-100 w-100">
+                                                <input class="form-check-input" type="radio" value="A" name="<?= $data['id'] ?>" >
+                                                    <?= $data['opsi_a'] ?>
+                                                <label class="form-check-label" for="input-jawaban">
+                                                </label>
+                                            </li>
+                                            <li class="list-item-jawaban h-100 w-100"><input class="form-check-input" type="radio" value="B" name="<?= $data['id'] ?>" >
+                                                    <?= $data['opsi_b'] ?>
+                                                <label class="form-check-label" for="input-jawaban">
+                                                </label>
+                                            </li>
+                                            <li class="list-item-jawaban h-100 w-100"><input class="form-check-input" type="radio" value="C" name="<?= $data['id'] ?>" >
+                                                    <?= $data['opsi_c'] ?>
+                                                <label class="form-check-label" for="input-jawaban">
+                                                </label>
+                                            </li>
+                                            <li class="list-item-jawaban h-100 w-100"><input class="form-check-input" type="radio" value="D" name="<?= $data['id'] ?>" >
+                                                    <?= $data['opsi_d'] ?>
+                                                <label class="form-check-label" for="input-jawaban">
+                                                </label>
+                                            </li>
+
+                                        </ol>
+
+
+                                    </li>
+                                <?php endforeach; ?>
+                                <?php else:?>
+                                    <h3 class="text-center">No data</h3>
+                                <?php endif;?>
+                                <?php if (!empty($dataSoal['antonim'])) :?>
+                                    <h5 class="m-3 m-lg-5 mt-5">B. Antonim</h5>
+                                <?php foreach ($dataSoal['antonim'] as $data) : ?>
+                                    <li class="mb-3">
+                                        <div class="soal card bg-secondary p-2 mb-4 ms-1" style="text-align: justify;">
+
+                                            <?= $data['soal'] ?>
+
+                                        </div>
+                                        <ol type="A" class="">
+                                            <li class="list-item-jawaban h-100 w-100">
+                                                <input class="form-check-input" type="radio" value="A" name="<?= $data['id'] ?>" >
+                                                    <?= $data['opsi_a'] ?>
+                                                <label class="form-check-label" for="input-jawaban">
+                                                </label>
+                                            </li>
+                                            <li class="list-item-jawaban h-100 w-100"><input class="form-check-input" type="radio" value="B" name="<?= $data['id'] ?>" >
+                                                    <?= $data['opsi_b'] ?>
+                                                <label class="form-check-label" for="input-jawaban">
+                                                </label>
+                                            </li>
+                                            <li class="list-item-jawaban h-100 w-100"><input class="form-check-input" type="radio" value="C" name="<?= $data['id'] ?>" >
+                                                    <?= $data['opsi_c'] ?>
+                                                <label class="form-check-label" for="input-jawaban">
+                                                </label>
+                                            </li>
+                                            <li class="list-item-jawaban h-100 w-100"><input class="form-check-input" type="radio" value="D" name="<?= $data['id'] ?>" >
+                                                    <?= $data['opsi_d'] ?>
+                                                <label class="form-check-label" for="input-jawaban">
+                                                </label>
+                                            </li>
+
+                                        </ol>
+
+
+                                    </li>
+                                <?php endforeach; ?>
+                                <?php else:?>
+                                    <h3 class="text-center">No data</h3>
+                                <?php endif;?>
+                                <?php if (!empty($dataSoal['analogi'])) :?>
+                                    <h5 class="m-3 m-lg-5 mt-5">C. Analogi</h5>
+                                <?php foreach ($dataSoal['analogi'] as $data) : ?>
                                     <li class="mb-3">
                                         <div class="soal card bg-secondary p-2 mb-4 ms-1" style="text-align: justify;">
 
@@ -86,8 +167,49 @@ $dataMhs = $session->credential['dataMhs'];
                         <?= form_open('Soal/submit') ?>
                             <?= csrf_field() ?>
                             <ol class="list-contain soalKuantitatif">
-                                <?php if (!empty($dataSoal['kuantitatif'])) :?>
-                                <?php foreach ($dataSoal['kuantitatif'] as $data) : ?>
+                                <?php if (!empty($dataSoal['logikaMtk'])) :?>
+                                    <h5 class="m-3 m-lg-5">A. Logika Aritmatika</h5>
+                                <?php foreach ($dataSoal['logikaMtk'] as $data) : ?>
+                                    <li class="mb-3">
+                                        <div class="soal card bg-light p-2 mb-4 ms-1" style="text-align: justify;">
+
+                                            <?= $data['soal'] ?>
+
+                                        </div>
+                                        <ol type="A" class="">
+                                            <li class="list-item-jawaban h-100 w-100">
+                                                <input class="form-check-input" type="radio" value="A" name="<?= $data['id'] ?>" >
+                                                    <?= $data['opsi_a'] ?>
+                                                <label class="form-check-label" for="input-jawaban">
+                                                </label>
+                                            </li>
+                                            <li class="list-item-jawaban h-100 w-100"><input class="form-check-input" type="radio" value="B" name="<?= $data['id'] ?>" >
+                                                    <?= $data['opsi_b'] ?>
+                                                <label class="form-check-label" for="input-jawaban">
+                                                </label>
+                                            </li>
+                                            <li class="list-item-jawaban h-100 w-100"><input class="form-check-input" type="radio" value="C" name="<?= $data['id'] ?>" >
+                                                    <?= $data['opsi_c'] ?>
+                                                <label class="form-check-label" for="input-jawaban">
+                                                </label>
+                                            </li>
+                                            <li class="list-item-jawaban h-100 w-100"><input class="form-check-input" type="radio" value="D" name="<?= $data['id'] ?>" >
+                                                    <?= $data['opsi_d'] ?>
+                                                <label class="form-check-label" for="input-jawaban">
+                                                </label>
+                                            </li>
+
+                                        </ol>
+
+
+                                    </li>
+                                <?php endforeach; ?>
+                                <?php else:?>
+                                    <h3 class="text-center">No Data</h3>
+                                <?php endif;?>
+                                <?php if (!empty($dataSoal['mtk'])) :?>
+                                    <h5 class="m-3 m-lg-5">B. Matematika</h5>
+                                <?php foreach ($dataSoal['mtk'] as $data) : ?>
                                     <li class="mb-3">
                                         <div class="soal card bg-light p-2 mb-4 ms-1" style="text-align: justify;">
 
@@ -134,8 +256,91 @@ $dataMhs = $session->credential['dataMhs'];
                         <?= form_open('Soal/submit') ?>
                             <?= csrf_field() ?>
                             <ol class="list-contain soalLogika">
-                                <?php if(!empty($dataSoal['logika'])) :?>
-                                <?php foreach ($dataSoal['logika'] as $data) : ?>
+                                <?php if(!empty($dataSoal['logikaUmum'])) :?>
+                                    <h5 class="m-3 m-lg-5">A. Logika Umum</h5>
+                                <?php foreach ($dataSoal['logikaUmum'] as $data) : ?>
+                                    <li class="mb-3">
+                                        <div class="soal card bg-light p-2 mb-4 ms-1" style="text-align: justify;">
+
+                                            <?= $data['soal'] ?>
+
+                                        </div>
+                                        <ol type="A" class="">
+                                            <li class="list-item-jawaban h-100 w-100">
+                                                <input class="form-check-input" type="radio" value="A" name="<?= $data['id'] ?>" >
+                                                    <?= $data['opsi_a'] ?>
+                                                <label class="form-check-label" for="input-jawaban">
+                                                </label>
+                                            </li>
+                                            <li class="list-item-jawaban h-100 w-100"><input class="form-check-input" type="radio" value="B" name="<?= $data['id'] ?>" >
+                                                    <?= $data['opsi_b'] ?>
+                                                <label class="form-check-label" for="input-jawaban">
+                                                </label>
+                                            </li>
+                                            <li class="list-item-jawaban h-100 w-100"><input class="form-check-input" type="radio" value="C" name="<?= $data['id'] ?>" >
+                                                    <?= $data['opsi_c'] ?>
+                                                <label class="form-check-label" for="input-jawaban">
+                                                </label>
+                                            </li>
+                                            <li class="list-item-jawaban h-100 w-100"><input class="form-check-input" type="radio" value="D" name="<?= $data['id'] ?>" >
+                                                    <?= $data['opsi_d'] ?>
+                                                <label class="form-check-label" for="input-jawaban">
+                                                </label>
+                                            </li>
+
+                                        </ol>
+
+
+                                    </li>
+                                <?php endforeach; ?>
+                            
+                            <?php else:?>
+                                <h3 class="text-center">No Data</h3>
+                            <?php endif;?>
+                                <?php if(!empty($dataSoal['logikaNalar'])) :?>
+                                    <h5 class="m-3 m-lg-5">B. Logika Penalaran</h5>
+                                <?php foreach ($dataSoal['logikaNalar'] as $data) : ?>
+                                    <li class="mb-3">
+                                        <div class="soal card bg-light p-2 mb-4 ms-1" style="text-align: justify;">
+
+                                            <?= $data['soal'] ?>
+
+                                        </div>
+                                        <ol type="A" class="">
+                                            <li class="list-item-jawaban h-100 w-100">
+                                                <input class="form-check-input" type="radio" value="A" name="<?= $data['id'] ?>" >
+                                                    <?= $data['opsi_a'] ?>
+                                                <label class="form-check-label" for="input-jawaban">
+                                                </label>
+                                            </li>
+                                            <li class="list-item-jawaban h-100 w-100"><input class="form-check-input" type="radio" value="B" name="<?= $data['id'] ?>" >
+                                                    <?= $data['opsi_b'] ?>
+                                                <label class="form-check-label" for="input-jawaban">
+                                                </label>
+                                            </li>
+                                            <li class="list-item-jawaban h-100 w-100"><input class="form-check-input" type="radio" value="C" name="<?= $data['id'] ?>" >
+                                                    <?= $data['opsi_c'] ?>
+                                                <label class="form-check-label" for="input-jawaban">
+                                                </label>
+                                            </li>
+                                            <li class="list-item-jawaban h-100 w-100"><input class="form-check-input" type="radio" value="D" name="<?= $data['id'] ?>" >
+                                                    <?= $data['opsi_d'] ?>
+                                                <label class="form-check-label" for="input-jawaban">
+                                                </label>
+                                            </li>
+
+                                        </ol>
+
+
+                                    </li>
+                                <?php endforeach; ?>
+                            
+                            <?php else:?>
+                                <h3 class="text-center">No Data</h3>
+                            <?php endif;?>
+                                <?php if(!empty($dataSoal['gambar'])) :?>
+                                    <h5 class="m-3 m-lg-5">C. Gambar / Spasial</h5>
+                                <?php foreach ($dataSoal['gambar'] as $data) : ?>
                                     <li class="mb-3">
                                         <div class="soal card bg-light p-2 mb-4 ms-1" style="text-align: justify;">
 
@@ -234,6 +439,10 @@ $dataMhs = $session->credential['dataMhs'];
         </div>
     </div>
 
+
+    <script>
+        Scrollbar.init(document.querySelector('#cardSoal'))
+    </script>
 
     <!-- model end  -->
 <?= $this->endSection(); ?>

@@ -12,16 +12,25 @@ class Soal extends Controller
 		$modelSoal = model('Soal');
 
 		$dataSoal = $modelSoal->getSoal();
-
+		
 
 		$data = [
 			'title' => 'soal',
 			'dataSoal' => [
-				'verbal' => $dataSoal['field']['verbal'],
-				'kuantitatif' => $dataSoal['field']['kuantitatif'],
-				'logika' => $dataSoal['field']['logika'],
+				'sinonim' => $dataSoal['field']['sinonim'],
+				'antonim' => $dataSoal['field']['antonim'],
+				'analogi' => $dataSoal['field']['analogi'],
+				'logikaMtk' => $dataSoal['field']['logikaMtk'],
+				'mtk' => $dataSoal['field']['mtk'],
+				'logikaUmum' => $dataSoal['field']['logikaUmum'],
+				'logikaNalar' => $dataSoal['field']['logikaNalar'],
+				'gambar' => $dataSoal['field']['gambar']
 			]
 		];
+
+		
+
+	
 		return view('Soal/index', $data);
 	}
 

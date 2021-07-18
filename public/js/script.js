@@ -1,5 +1,5 @@
 $(function () {
-  $("#daftar-mahasiswa").DataTable();
+  var table = $("#daftar-mahasiswa").DataTable();
   $("#daftar-soal").DataTable();
   $("#daftar-tpa").DataTable();
 
@@ -32,189 +32,17 @@ $(function () {
     placeholder: "masukkan  text",
     theme: "snow",
   };
-  var soalData = [];
-  var allJawaban = undefined;
-  var jawabanVerbalData = [];
-  var jawabanKuantitatifData = [];
-  var jawabanLogikaData = [];
-  var skorVerbal = 0;
-  var skorKuantitatif = 0;
-  var skorLogika = 0;
-  var jumlahBenarSoalVerbal = 0;
-  var jumlahBenarSoalKuantitatif = 0;
-  var jumlahBenarSoalLogika = 0;
-  var jumlahSoalVerbal = $(".soalVerbal > li").length;
-  var jumlahSoalKuantitatif = $(".soalKuantitatif > li").length;
-  var jumlahSoalLogika = $(".soalLogika > li").length;
-  var jumlahSoalAll =
-    jumlahSoalVerbal + jumlahSoalKuantitatif + jumlahSoalLogika;
 
-  var quill = new Quill("#soal-container", quillConfig);
+  
+  var quill =  new Quill("#soal-container", quillConfig);
   var quilla = new Quill("#opsiA-container", quillConfig);
   var quillb = new Quill("#opsiB-container", quillConfig);
   var quillc = new Quill("#opsiC-container", quillConfig);
   var quilld = new Quill("#opsiD-container", quillConfig);
-
-  $.ajax({
-    type: "POST",
-    url: baseUrl("Soal/cekJawaban"),
-    contentType: false,
-    processData: false,
-    cache: false,
-
-    success: function (response) {
-      allJawaban = JSON.parse(response);
-    },
-    error: function (xhr) {
-      // if error occured
-      alert("Error karena" + xhr.statusText + xhr.responseText);
-    },
-    failure: function (response) {
-      modalMahasiswa.modal("hide");
-      deleteInputValue();
-      Swal.fire(
-        "Error",
-        "Oops, Data Anda Gagal Disimpan.", // had a missing comma
-        "error"
-      );
-    },
-  });
-
-  var carousel = $("#carouselExampleIndicators").carousel({
-    interval: false,
-    wrap: false,
-  });
-
-  var soalindex = 1;
-  if ($(".carousel-inner").children().last().hasClass("active")) {
-    $(".right").hide();
-  } else if ($(".carousel-inner").children().first().hasClass("active")) {
-    $(".left").hide();
-  }
-
-  $("#carouselExampleIndicators").bind("slid", function () {
-    currentIndex = $("div.active").index() + 1;
-
-    $(".title-slide").html("" + currentIndex + "/" + totalItems + "");
-  });
-
-  $("#carouselExampleIndicators").on("slid.bs.carousel", function () {
-    //alert("slid");
-  });
-
-  $("#soal-submit").hide();
-  $(".left").hide();
-  var carouselAt = 1;
-  if (carouselAt == 1) {
-    timer = new easytimer.Timer();
-    $(".title-soal").html("Soal Verbal");
-    timer.start({ countdown: true, startValues: { minutes: 25 } });
-    timer.addEventListener("secondsUpdated", function (e) {
-      $(".timer").html(timer.getTimeValues().toString());
-    });
-    timer.addEventListener("targetAchieved", function (e) {
-      carousel.cycle();
-    });
-  }
-  $("#carouselExampleIndicators").on("slid.bs.carousel", function () {
-    var control = $(".carousel-control");
-    if (carouselAt == 2) {
-      timer = new easytimer.Timer();
-      $(".title-soal").html("Soal Kuantitatif");
-      timer.start({ countdown: true, startValues: { minutes: 35 } });
-      timer.addEventListener("secondsUpdated", function (e) {
-        $(".timer").html(timer.getTimeValues().toString());
-      });
-      timer.addEventListener("targetAchieved", function (e) {
-        carousel.cycle();
-      });
-    } else if (carouselAt == 3) {
-      timer =new easytimer.Timer();
-      $(".title-soal").html("Soal Logika");
-      timer.start({ countdown: true, startValues: { minutes: 30 } });
-      timer.addEventListener("secondsUpdated", function (e) {
-        $(".timer").html(timer.getTimeValues().toString());
-      });
-      timer.addEventListener("targetAchieved", function (e) {
-          $('#soal-submit').trigger('click');
-      });
-    }
-
-    $("#soal-submit").hide();
-
-    if ($(".carousel-inner").children().last().hasClass("active")) {
-      $(".right").hide();
-      $("#soal-submit").show();
-      carouselAt = 3;
-    }
-  });
-
-  $(".right").on("click", function () {
-    if (carouselAt == 1) {
-      console.log("jawaban data : ", allJawaban);
-
-      soalData.forEach(function (item) {
-        var res = allJawaban.find((o) => o.id == item.id);
-        if (res.jawaban == item.value) {
-          jawabanVerbalData.push(1);
-        } else {
-          jawabanVerbalData.push(0);
-        }
-      });
-
-      console.log("jawaban data : ", jawabanVerbalData);
-      console.log("jumlah soal verbal = " + jumlahSoalVerbal);
-      for (var i = 0; i < jumlahSoalVerbal; i++) {
-        if (jawabanVerbalData[i] == 1) {
-          jumlahBenarSoalVerbal += 1;
-        } else if (jawabanVerbalData[i] == undefined) {
-          jawabanVerbalData.push(0);
-        }
-      }
-      skorVerbal = Math.round(
-        (jumlahBenarSoalVerbal / jumlahSoalVerbal) * 600 + 200
-      );
-      console.log("jawaban data : ", jawabanVerbalData);
-      console.log("jumlah benar : ", jumlahBenarSoalVerbal);
-      console.log("Skor verbal : ", skorVerbal);
-      soalData = [];
-    }
-    if (carouselAt == 2) {
-      soalData.forEach(function (item) {
-        var res = allJawaban.find((o) => o.id == item.id);
-        if (res.jawaban == item.value) {
-          jawabanKuantitatifData.push(1);
-        } else {
-          jawabanKuantitatifData.push(0);
-        }
-      });
-
-      console.log("jawaban data : ", jawabanKuantitatifData);
-      console.log("jumlah soal verbal = " + jumlahSoalKuantitatif);
-      for (var i = 0; i < jumlahSoalKuantitatif; i++) {
-        if (jawabanKuantitatifData[i] == 1) {
-          jumlahBenarSoalKuantitatif += 1;
-        } else if (jawabanKuantitatifData[i] == undefined) {
-          jawabanKuantitatifData.push(0);
-        }
-      }
-
-      skorKuantitatif = Math.round(
-        (jumlahBenarSoalKuantitatif / jumlahSoalKuantitatif) * 600 + 200
-      );
-
-      console.log("jawaban data : ", jawabanKuantitatifData);
-      console.log("jumlah benar : ", jumlahBenarSoalKuantitatif);
-      console.log("Skor kuantitatif : ", skorKuantitatif);
-      soalData = [];
-    }
-
-    carouselAt += 1;
-  });
-
-  function baseUrl(value) {
-    return window.location.protocol + "//" + window.location.host + "/" + value;
-  }
+  var kategori = $("#kategori-soal-input");
+  var jenis = $("#jenis-soal-input");
+  var jawabanSoal = $("#jawaban-soal");
+  var statusSoal = $("#status-soal");
 
   function deleteInputValue() {
     $("#profile").val("");
@@ -228,23 +56,16 @@ $(function () {
     $("#no_hp").val("");
     $("#jenis-soal-input").val("");
     $("#kategori-soal-input").val("");
-    $("#soal-container").html("");
-    $("#opsiA-container").html("");
-    $("#opsiB-container").html("");
-    $("#opsiC-container").html("");
-    $("#opsiD-container").html("");
+    quill.root.innerHtml = "";
+    quilla.root.innerHtml= "";
+    quillb.root.innerHtml= "";
+    quillc.root.innerHtml= "";
+    quilld.root.innerHtml= "";
     $("#jawaban-soal").val("");
     $("#status-soal").val("");
   }
-
-  $("#cancel").on("click", function () {
-    deleteInputValue();
-  });
-
-  var kategori = $("#kategori-soal-input");
-  var jenis = $("#jenis-soal-input");
-  var jawabanSoal = $("#jawaban-soal");
-  var statusSoal = $("#status-soal");
+  
+  
 
   var btnTambahSoal = $("#tambahDataSoal");
   var btnUpdateSoal = $(".updateDataSoal");
@@ -253,11 +74,11 @@ $(function () {
 
   var formSoal = $("#formSoal");
   var modalSoal = $("#soal-modal");
-
+ 
   btnTambahSoal.on("click", function () {
+ 
     deleteInputValue();
     labelFormSoal.html("Tambah Data Soal");
-    modalSoal.modal("toggle");
     modalSoal.modal("show");
     formSoal.submit(function (event) {
       Swal.fire({
@@ -304,6 +125,7 @@ $(function () {
           error: function (xhr) {
             // if error occured
             alert("Error karena" + xhr.statusText + xhr.responseText);
+            console.log(xhr);
             modalSoal.modal("hide");
             deleteInputValue();
           },
@@ -325,8 +147,8 @@ $(function () {
   });
 
   $("#daftar-soal tbody").on("click", "tr .updateDataSoal", function () {
+    deleteInputValue();
     labelFormSoal.html("Update Data Soal");
-    modalSoal.modal("toggle");
     modalSoal.modal("show");
     var id = $(this).data("id");
     var formData = new FormData();
@@ -486,7 +308,7 @@ $(function () {
 
   $("#daftar-mahasiswa tbody").on(
     "click",
-    "tr .hapusDataMahasiswa",
+    "tr td .hapusDataMahasiswa",
     function (event) {
       var id = $(this).data("id");
       var formData = new FormData();
@@ -542,11 +364,14 @@ $(function () {
       });
     }
   );
+  
 
   $("#daftar-mahasiswa tbody").on(
     "click",
-    "tr .updateDataMahasiswa",
+    "tr td .updateDataMahasiswa",
     function (event) {
+      
+      modalProfile.hide();
       labelFormMahasiswa.html("Update Data Mahasiswa");
       modalMahasiswa.modal("toggle");
       modalMahasiswa.modal("show");
@@ -670,7 +495,7 @@ $(function () {
     modalMahasiswa.modal("show");
     formMahasiswa.submit(function (event) {
       var urlTambahMhs = baseUrl("Admin/tambahMahasiswa");
-
+      quill = new Qu
       Swal.fire({
         title: "Yakin Tambah Data?",
         icon: "question",
@@ -750,8 +575,6 @@ $(function () {
       }
     });
 
-    console.log("jawaban data : ", jawabanLogikaData);
-    console.log("jumlah soal verbal = " + jumlahSoalLogika);
     for (var i = 0; i < jumlahSoalLogika; i++) {
       if (jawabanLogikaData[i] == 1) {
         jumlahBenarSoalLogika += 1;
@@ -764,9 +587,6 @@ $(function () {
       (jumlahBenarSoalLogika / jumlahSoalLogika) * 600 + 200
     );
 
-    console.log("jawaban data : ", jawabanLogikaData);
-    console.log("jumlah benar : ", jumlahBenarSoalLogika);
-    console.log("Skor logika : ", skorLogika);
     soalData = [];
     var jumlahBenarAll =
       jumlahBenarSoalVerbal +
@@ -831,6 +651,223 @@ $(function () {
       }
     });
   });
+  var Scrollbar = window.Scrollbar;
+
+
+  if (window.location.href === baseUrl('Soal'));
+  {
+    
+    var cardSoal = Scrollbar.init(document.querySelector('#cardSoal'));
+  } 
+
+
+  var soalData = [];
+  var allJawaban = undefined;
+  var jawabanVerbalData = [];
+  var jawabanKuantitatifData = [];
+  var jawabanLogikaData = [];
+  var skorVerbal = 0;
+  var skorKuantitatif = 0;
+  var skorLogika = 0;
+  var jumlahBenarSoalVerbal = 0;
+  var jumlahBenarSoalKuantitatif = 0;
+  var jumlahBenarSoalLogika = 0;
+  var jumlahSoalVerbal = $(".soalVerbal > li").length;
+  var jumlahSoalKuantitatif = $(".soalKuantitatif > li").length;
+  var jumlahSoalLogika = $(".soalLogika > li").length;
+  var jumlahSoalAll =
+    jumlahSoalVerbal + jumlahSoalKuantitatif + jumlahSoalLogika;
+
+ 
+
+
+  
+  $.ajax({
+    type: "POST",
+    url: baseUrl("Soal/cekJawaban"),
+    contentType: false,
+    processData: false,
+    cache: false,
+
+    success: function (response) {
+      allJawaban = JSON.parse(response);
+    },
+    error: function (xhr) {
+      // if error occured
+      alert("Error karena" + xhr.statusText + xhr.responseText);
+    },
+    failure: function (response) {
+      modalMahasiswa.modal("hide");
+      deleteInputValue();
+      Swal.fire(
+        "Error",
+        "Oops, Data Anda Gagal Disimpan.", // had a missing comma
+        "error"
+      );
+    },
+  });
+
+  var carousel = $("#carouselExampleIndicators").carousel({
+    interval: false,
+    wrap: false,
+  });
+
+  var soalindex = 1;
+  if ($(".carousel-inner").children().last().hasClass("active")) {
+    $(".right").hide();
+  } else if ($(".carousel-inner").children().first().hasClass("active")) {
+    $(".left").hide();
+  }
+
+  $("#carouselExampleIndicators").bind("slid", function () {
+    currentIndex = $("div.active").index() + 1;
+
+    $(".title-slide").html("" + currentIndex + "/" + totalItems + "");
+  });
+
+  $("#carouselExampleIndicators").on("slid.bs.carousel", function () {
+    //alert("slid");
+  });
+
+  $("#soal-submit").hide();
+  $(".left").hide();
+  var carouselAt = 1;
+  if (carouselAt == 1) {
+    timer = new easytimer.Timer();
+    $(".title-soal").html("Soal Verbal");
+    timer.start({ countdown: true, startValues: { minutes: 1 } });
+    timer.addEventListener("secondsUpdated", function (e) {
+      $(".timer").html(timer.getTimeValues().toString());
+    });
+    timer.addEventListener("targetAchieved", function (e) {
+      $('.right').trigger('click');
+    });
+  }
+
+  if (carouselAt == 2) {
+      timer = new easytimer.Timer();
+      $(".title-soal").html("Soal Kuantitatif");
+      timer.start({ countdown: true, startValues: { minutes: 1 } });
+      timer.addEventListener("secondsUpdated", function (e) {
+        $(".timer").html(timer.getTimeValues().toString());
+      });
+      timer.addEventListener("targetAchieved", function (e) {
+        $('.right').trigger('click');
+      });
+      cardSoal.scrollTop = 0;
+    } else if (carouselAt == 3) {
+      timer =new easytimer.Timer();
+      $(".title-soal").html("Soal Logika");
+      timer.start({ countdown: true, startValues: { minutes: 1 } });
+      timer.addEventListener("secondsUpdated", function (e) {
+        $(".timer").html(timer.getTimeValues().toString());
+      });
+      timer.addEventListener("targetAchieved", function (e) {
+          $('#soal-submit').trigger('click');
+      });
+      cardSoal.scrollTop = 0;
+    }
+
+  $("#carouselExampleIndicators").on("slid.bs.carousel", function () {
+    var control = $(".carousel-control");
+    if (carouselAt == 2) {
+      timer = new easytimer.Timer();
+      $(".title-soal").html("Soal Kuantitatif");
+      timer.start({ countdown: true, startValues: { minutes: 1 } });
+      timer.addEventListener("secondsUpdated", function (e) {
+        $(".timer").html(timer.getTimeValues().toString());
+      });
+      timer.addEventListener("targetAchieved", function (e) {
+        $('.right').trigger('click');
+      });
+      cardSoal.scrollTop = 0;
+    } else if (carouselAt == 3) {
+      timer =new easytimer.Timer();
+      $(".title-soal").html("Soal Logika");
+      timer.start({ countdown: true, startValues: { minutes: 1 } });
+      timer.addEventListener("secondsUpdated", function (e) {
+        $(".timer").html(timer.getTimeValues().toString());
+      });
+      timer.addEventListener("targetAchieved", function (e) {
+          $('#soal-submit').trigger('click');
+      });
+      cardSoal.scrollTop = 0;
+    }
+
+    $("#soal-submit").hide();
+
+    if ($(".carousel-inner").children().last().hasClass("active")) {
+      $(".right").hide();
+      $("#soal-submit").show();
+      carouselAt = 3;
+    }
+  });
+
+  $(".right").on("click", function () {
+    if (carouselAt == 1) {
+
+      soalData.forEach(function (item) {
+        var res = allJawaban.find((o) => o.id == item.id);
+        if (res.jawaban == item.value) {
+          jawabanVerbalData.push(1);
+        } else {
+          jawabanVerbalData.push(0);
+        }
+      });
+
+      for (var i = 0; i < jumlahSoalVerbal; i++) {
+        if (jawabanVerbalData[i] == 1) {
+          jumlahBenarSoalVerbal += 1;
+        } else if (jawabanVerbalData[i] == undefined) {
+          jawabanVerbalData.push(0);
+        }
+      }
+      skorVerbal = Math.round(
+        (jumlahBenarSoalVerbal / jumlahSoalVerbal) * 600 + 200
+      );
+      soalData = [];
+      cardSoal.scrollTop = 0;
+    }
+    if (carouselAt == 2) {
+      soalData.forEach(function (item) {
+        var res = allJawaban.find((o) => o.id == item.id);
+        if (res.jawaban == item.value) {
+          jawabanKuantitatifData.push(1);
+        } else {
+          jawabanKuantitatifData.push(0);
+        }
+      });
+
+      for (var i = 0; i < jumlahSoalKuantitatif; i++) {
+        if (jawabanKuantitatifData[i] == 1) {
+          jumlahBenarSoalKuantitatif += 1;
+        } else if (jawabanKuantitatifData[i] == undefined) {
+          jawabanKuantitatifData.push(0);
+        }
+      }
+
+      skorKuantitatif = Math.round(
+        (jumlahBenarSoalKuantitatif / jumlahSoalKuantitatif) * 600 + 200
+      );
+
+      soalData = [];
+      cardSoal.scrollTop = 0;
+    }
+
+    carouselAt += 1;
+  });
+
+  function baseUrl(value) {
+    return window.location.protocol + "//" + window.location.host + "/" + value;
+  }
+
+  
+
+  $("#cancel").on("click", function () {
+    deleteInputValue();
+  });
+
+  
 
   $(".soal-container input:radio").change(function () {
     var soalOpsi = {
@@ -856,7 +893,25 @@ $(function () {
       }
     }
 
-    console.log(jawabanVerbalData);
-    console.log(soalData);
   });
+
+
+  
+
+  var modalProfile = new bootstrap.Modal($('#profilModalDash'), {
+    keyboard: false
+  })
+
+  $('#daftar-mahasiswa tbody').on('click',' tr td:not(#action)', function () {
+    var data = table.row( this ).data();
+    $('.nimPDash').html(data[1]);
+    $('.namaPDash').html(data[2]);
+    $('.JkPDash').html((data[3] === "P") ? ('Perempuan') : ('Laki-Laki') );
+    $('.prodiPDash').html(data[4]);
+    $('.ttlPDash').html(data[7]);
+    $('.emailPDash').html(data[5]);
+    $('.hpPDash').html(data[8]);
+    $('.fotoPDash').attr('src',data[9]);
+    modalProfile.toggle();
+} );
 });
