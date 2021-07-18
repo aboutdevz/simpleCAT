@@ -171,7 +171,7 @@ $dataMhs = $session->credential['dataMhs'];
                                     <h5 class="m-3 m-lg-5">A. Logika Aritmatika</h5>
                                 <?php foreach ($dataSoal['logikaMtk'] as $data) : ?>
                                     <li class="mb-3">
-                                        <div class="soal card bg-light p-2 mb-4 ms-1" style="text-align: justify;">
+                                        <div class="soal card bg-secondary p-2 mb-4 ms-1" style="text-align: justify;">
 
                                             <?= $data['soal'] ?>
 
@@ -211,7 +211,7 @@ $dataMhs = $session->credential['dataMhs'];
                                     <h5 class="m-3 m-lg-5">B. Matematika</h5>
                                 <?php foreach ($dataSoal['mtk'] as $data) : ?>
                                     <li class="mb-3">
-                                        <div class="soal card bg-light p-2 mb-4 ms-1" style="text-align: justify;">
+                                        <div class="soal card bg-secondary p-2 mb-4 ms-1" style="text-align: justify;">
 
                                             <?= $data['soal'] ?>
 
@@ -260,7 +260,7 @@ $dataMhs = $session->credential['dataMhs'];
                                     <h5 class="m-3 m-lg-5">A. Logika Umum</h5>
                                 <?php foreach ($dataSoal['logikaUmum'] as $data) : ?>
                                     <li class="mb-3">
-                                        <div class="soal card bg-light p-2 mb-4 ms-1" style="text-align: justify;">
+                                        <div class="soal card bg-secondary p-2 mb-4 ms-1" style="text-align: justify;">
 
                                             <?= $data['soal'] ?>
 
@@ -301,7 +301,7 @@ $dataMhs = $session->credential['dataMhs'];
                                     <h5 class="m-3 m-lg-5">B. Logika Penalaran</h5>
                                 <?php foreach ($dataSoal['logikaNalar'] as $data) : ?>
                                     <li class="mb-3">
-                                        <div class="soal card bg-light p-2 mb-4 ms-1" style="text-align: justify;">
+                                        <div class="soal card bg-secondary p-2 mb-4 ms-1" style="text-align: justify;">
 
                                             <?= $data['soal'] ?>
 
@@ -342,7 +342,7 @@ $dataMhs = $session->credential['dataMhs'];
                                     <h5 class="m-3 m-lg-5">C. Gambar / Spasial</h5>
                                 <?php foreach ($dataSoal['gambar'] as $data) : ?>
                                     <li class="mb-3">
-                                        <div class="soal card bg-light p-2 mb-4 ms-1" style="text-align: justify;">
+                                        <div class="soal card bg-secondary p-2 mb-4 ms-1" style="text-align: justify;">
 
                                             <?= $data['soal'] ?>
 
