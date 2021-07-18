@@ -600,7 +600,16 @@ $(function () {
       scp = "Research Track";
     } else if (skorLogika > skorVerbal && skorLogika > skorKuantitatif) {
       scp = "Internship Track";
-    } else {
+    } else if (skorLogika == skorKuantitatif && skorLogika == skorVerbal) {
+      scp = "Student Exchange / Research / Internship Track";
+    } else if (skorVerbal == skorKuantitatif) {
+      scp = "Student Exchange / Research Track";
+    } else if (skorKuantitatif == skorLogika) {
+      scp = "Research / Internship Track";
+    } else if(skorVerbal == skorLogika) {
+      scp = "Student Exchange / Internship Track";
+    } else 
+    {
       scp = "Internship Track";
     }
     var formData = new FormData();

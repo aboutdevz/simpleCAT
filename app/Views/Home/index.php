@@ -2,6 +2,19 @@
 
 $session = \Config\Services::session();
 $dataMhs = $session->credential['dataMhs'];
+
+if ($dataMhs->jenis_kelamin == 'P')
+{
+    $dataMhs->jenis_kelamin = "Perempuan";
+}
+else if ($dataMhs->jenis_kelamin == 'L')
+{
+    $dataMhs->jenis_kelamin = "Laki-Laki";
+}
+else
+{
+    $dataMhs->jenis_kelamin = "Tidak Ada";
+}
 ?>
 
 <?= $this->extend('layout/master.php') ?>
@@ -76,7 +89,7 @@ $dataMhs = $session->credential['dataMhs'];
                         <div class="col-8 ">
                             <p>:<?=" ".$dataMhs->nim?></p>
                             <p>:<?=" ".$dataMhs->nama_mhs?> </p>
-                            <p>:<?=" ".($dataMhs->jenis_kelamin == "P") ? (' Perempuan') : (' Laki-Laki') ?></p>
+                            <p>:<?=" ".$dataMhs->jenis_kelamin  ?></p>
                             <p>:<?=" ".$dataMhs->prodi?></p>
                             <p>:<?=" ".$dataMhs->ttl?></p>
                             <p>:<?=" ".$dataMhs->email?></p>

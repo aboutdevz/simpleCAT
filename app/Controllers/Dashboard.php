@@ -111,11 +111,7 @@ class Dashboard extends Controller
 					$data['foto'] = imgAsset('profil/' . $file->getName());
 					$file->move(ROOTPATH . 'public/assets/img/profil');
 				}
-				if ($data['kelamin'] == "L") {
-					$data['kelamin'] = "Laki-Laki";
-				} else {
-					$data['kelamin'] = "Perempuan";
-				}
+				
 				$dateTemp = strtotime($data['ttl']);
 				$data['ttl']  = date('d F Y',$dateTemp);
 				try {
@@ -167,11 +163,7 @@ class Dashboard extends Controller
 					$data['foto'] = imgAsset('profil/' . $file->getName());
 					$file->move(ROOTPATH . 'public/assets/img/profil');
 				}
-				if ($data['jenis_kelamin'] == "L") {
-					$data['jenis_kelamin'] = "Laki-Laki";
-				} else {
-					$data['jenis_kelamin'] = "Perempuan";
-				}
+				
 				$dateTemp = strtotime($data['ttl']);
 				$data['ttl']  = date('d F Y',$dateTemp);
 				try {
