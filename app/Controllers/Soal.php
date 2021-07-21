@@ -3,6 +3,7 @@
 namespace App\Controllers;
 
 use CodeIgniter\Controller;
+use CodeIgniter\I18n\Time;
 
 class Soal extends Controller
 {
@@ -42,6 +43,10 @@ class Soal extends Controller
 			$modelHasil = model('Hasil');
 			$data = $this->request->getPost();
 			$data['id_mahasiswa'] = (int)$session->credential['dataMhs']->id;
+			$time = new Time('now');
+		
+			$data['tgl'] = $time->toLocalizedString('d MMMM yyyy');
+
 			$sessionHasil = [
 				'sessionHasil' => [
 					'nama' => $session->credential['dataMhs']->nama_mhs,
@@ -69,7 +74,7 @@ class Soal extends Controller
 				throw $th;
 			}
 		}
-		return redirect()->to(base_url('Hasil'));
+		return redirect()->to(base_url('Selesai'));
 	}
 
 	public function cekJawaban()

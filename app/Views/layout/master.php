@@ -5,17 +5,17 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="<?= base_url('css/bootstrap.min.css'); ?>">
-    <link href="<?= base_url('assets/node_modules/quill/dist/quill.core.css') ?>" rel="stylesheet">
-    <link rel="stylesheet" href="<?= base_url('assets/node_modules/quill/dist/quill.snow.css') ?>">
+    <link rel="stylesheet" href="css/bootstrap.min.css">
+    <link href="assets/node_modules/quill/dist/quill.core.css" rel="stylesheet">
+    <link rel="stylesheet" href="assets/node_modules/quill/dist/quill.snow.css">
     
-    <link rel="stylesheet" type="text/css" href="<?= base_url('assets/data_table/datatables.min.css') ?>" />
+    <link rel="stylesheet" type="text/css" href="assets/data_table/datatables.min.css" />
 
-    <link rel="stylesheet" href="<?= base_url('assets/node_modules/sweetalert2/dist/sweetalert2.min.css') ?>">
-    <link rel="stylesheet" href="<?= base_url('css/style.css'); ?>">
-    <script src="<?= base_url('assets/node_modules/jquery/dist/jquery.min.js'); ?>"></script>
-    <script src="<?= base_url('js/bootstrap.min.js'); ?>"></script>
-    <script type="text/javascript" src="<?= base_url('assets/data_table/datatables.min.js'); ?>"></script>
+    <link rel="stylesheet" href="assets/node_modules/sweetalert2/dist/sweetalert2.min.css">
+    <link rel="stylesheet" href="css/style.css">
+    <script src="assets/node_modules/jquery/dist/jquery.min.js"></script>
+    <script src="js/bootstrap.min.js"></script>
+    <script type="text/javascript" src="assets/data_table/datatables.min.js"></script>
 
     <style>
         .loaderContainer {
@@ -179,14 +179,14 @@
 
     
 
-    <script src="<?= base_url('assets/node_modules/smooth-scrollbar/dist/smooth-scrollbar.js'); ?>"></script>
-    <script src="<?= base_url('assets/node_modules/highlight.js/highlight.min.js') ?>"></script>
-    <script src="<?= base_url('assets/node_modules/quill/dist/quill.js'); ?>"></script>
-    <script src="<?= base_url('js/bootstrap.min.js'); ?>"></script>
-    <script src="<?= base_url('assets/node_modules/timerjs/dist/easytimer.min.js') ?>"></script>
-    <script src="<?= base_url('assets/node_modules/sweetalert2/dist/sweetalert2.min.js') ?>"></script>
-    <script src="<?= base_url('js/script.js'); ?>"></script>
-    <script src="<?= base_url('js/quillsetup.js'); ?>"></script>
+    <script src="assets/node_modules/smooth-scrollbar/dist/smooth-scrollbar.js"></script>
+    <script src="assets/node_modules/highlight.js/highlight.min.js"></script>
+    <script src="assets/node_modules/quill/dist/quill.js"></script>
+    <script src="js/bootstrap.min.js"></script>
+    <script src="assets/node_modules/timerjs/dist/easytimer.min.js"></script>
+    <script src="assets/node_modules/sweetalert2/dist/sweetalert2.min.js"></script>
+    <script src="js/script.js"></script>
+    <script src="js/quillsetup.js"></script>
     <script>
         $(window).on('load', function() {
             $('.loaderContainer').fadeOut('slow');

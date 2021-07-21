@@ -137,3 +137,16 @@ body
     color: black !important;
     background-color: rgb(223, 201, 213) !important;
 }
+
+.soalVerbal p
+{
+    display: inline-block;
+}
+.soalKuantitatif p
+{
+    display: inline-block;
+}
+.soalLogika p
+{
+    display: inline-block;
+}

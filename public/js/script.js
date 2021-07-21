@@ -643,7 +643,7 @@ $(function () {
               showConfirmButton: false,
               timer: 1500,
             });
-            window.location.href = baseUrl("Hasil");
+            window.location.href = baseUrl("Selesai");
           },
           error: function (xhr) {
             // if error occured
