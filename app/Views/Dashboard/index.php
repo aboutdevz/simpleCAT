@@ -27,7 +27,7 @@
 
                         <p class="text-center display-4 mb-5">Daftar Mahasiswa</p>
                         <div class="btn-soal w-100 text-center mb-3">
-                            <!-- <button class="btn bg-success">&uparrow; Import Data</button> -->
+                            <button data-bs-toggle="modal" data-bs-target="#import-modalMhs" class="btn bg-success">&uparrow; Import Data</button>
                             <button  id="tambahDataMahasiswa" data-tipe="tambah" class="btn flex-grow-1 bg-primary dataMahasiswa" >&plus;
                                 Tambah Data Mahasiswa</button>
                             <!-- <button class="btn bg-info">&downarrow; Export Data</button> -->
@@ -455,6 +455,34 @@
             </div>
             <div class="modal-body">
                 <form action="<?=base_url('Test');?>" method="POST" enctype="multipart/form-data">
+                    <div class="form-group mt-3">
+                        <label class="form-label" for=""><b>file</b> </label>
+                        <input class="form-control" type="file" name="file" id="file" required>
+                        <span class="form-text text-danger">masukkan File yang sesuai format!!</span>
+                    </div>
+                    
+            </div>
+            <div class="modal-footer">
+                <div class="btn-group w-100 justify-content-end">
+                    <button id="cancel" class="btn bg-danger" data-bs-dismiss="modal">Kembali</button>
+                    <button type="submit" class="btn bg-success">simpan</button>
+                </div>
+            </div>
+            </form>
+        </div>
+    </div>
+</div>
+<!-- modal end  -->
+<!-- modal start  -->
+<div class="modal fade" id="import-modalMhs" data-bs-keyboard="false" tabindex="-1" aria-labelledby="#tambah-mahasiswa-modalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header bg-primary">
+                <h5 class="modal-title" id="#modal-mahasiswa-modalLabel">Import</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close" style="color: white;"></button>
+            </div>
+            <div class="modal-body">
+                <form action="<?=base_url('Test/mahasiswaImport');?>" method="POST" enctype="multipart/form-data">
                     <div class="form-group mt-3">
                         <label class="form-label" for=""><b>file</b> </label>
                         <input class="form-control" type="file" name="file" id="file" required>

@@ -165,5 +165,83 @@ class Test extends BaseController
 		}
 	}
 
+
+	public function mahasiswaImport()
+	{
+		$files = $this->request->getFile('file');
+		try {
+			//code...
+			$modelMhs = model('Mahasiswa');
+			if ($files > 0) {
+				$file = $this->request->getFile('file')->getTempName();
+				$inputFileName = $file;
+				echo 'ada file';
+				$spreadsheet = IOFactory::load($inputFileName);
+				$sheetData = $spreadsheet->getActiveSheet();
+				$rowIndex = 2;
+				$dataIn = array();
+
+				foreach ($sheetData->getRowIterator() as $row) {
+					$p1 = $sheetData->getCell('A' . $rowIndex)->getCalculatedValue();
+					$p2 = $sheetData->getCell('D' . $rowIndex)->getCalculatedValue();
+					$p3 = $sheetData->getCell('F' . $rowIndex)->getCalculatedValue();
+					$p4 = $sheetData->getCell('E' . $rowIndex)->getCalculatedValue();
+					if (!empty($p1 || $p2 || $p3 || $p4)) {
+						echo "<br><br>";
+						
+
+						
+						
+						$dataIn['id_role'] = 2;
+						$dataIn['nim'] = $sheetData->getCell('C' . $rowIndex)->getCalculatedValue();
+						$dataIn['nama_mhs'] = $sheetData->getCell('D' . $rowIndex)->getCalculatedValue();
+						$dataIn['ttl'] = $sheetData->getCell('H' . $rowIndex)->getCalculatedValue();
+						
+						$kelamin =  $sheetData->getCell('E' . $rowIndex)->getCalculatedValue();
+
+						switch (ucfirst($kelamin)) {
+							case "Perempuan":
+								$kelamin = "P";
+								break;
+							case "Laki-Laki":
+								$kelamin = "L";
+							default:
+								$kelamin = "L";
+								break;
+						}
+						$dataIn['jenis_kelamin'] = $kelamin;
+						$dataIn['prodi'] = $sheetData->getCell('F' . $rowIndex)->getCalculatedValue();
+						$dataIn['email'] = $sheetData->getCell('G' . $rowIndex)->getCalculatedValue();
+						$dataIn['no_hp'] = $sheetData->getCell('I' . $rowIndex)->getCalculatedValue();
+						$dataIn['foto'] = imgAsset('profil/'.$sheetData->getCell('B' . $rowIndex)->getCalculatedValue()) ;
+							
+												
+						
+					
+						try {
+							
+							$modelMhs->save($dataIn);
+							echo 'suksess save';
+							
+						} catch (\Exception $th) {
+							die($th->getMessage());
+							return redirect()->to(base_url('Dashboard'));
+							echo 'gagal save';
+						}
+					}
+
+
+					$rowIndex++;
+				}
+				return redirect()->to(base_url('Dashboard'));
+				
+			}
+		} catch (\CodeIgniter\Database\Exceptions\DataException $th) {
+			die($th->getMessage());
+			return redirect()->to(base_url('Dashboard'));
+			echo 'gagal luar';
+		}
+
+	}
 	
 }
