@@ -28,7 +28,7 @@
                         <p class="text-center display-4 mb-5">Daftar Mahasiswa</p>
                         <div class="btn-soal w-100 text-center mb-3">
                             <button data-bs-toggle="modal" data-bs-target="#import-modalMhs" class="btn bg-success">&uparrow; Import Data</button>
-                            <button  id="tambahDataMahasiswa" data-tipe="tambah" class="btn flex-grow-1 bg-primary dataMahasiswa" >&plus;
+                            <button id="tambahDataMahasiswa" data-tipe="tambah" class="btn flex-grow-1 bg-primary dataMahasiswa">&plus;
                                 Tambah Data Mahasiswa</button>
                             <!-- <button class="btn bg-info">&downarrow; Export Data</button> -->
                         </div>
@@ -49,37 +49,37 @@
                                         <th style="display: none;">Action</th>
                                         <th style="display: none;">Action</th>
                                         <th style="display: none;">Action</th>
-                                        
+
                                     </tr>
                                 </thead>
 
                                 <tbody>
-                                <?php if (!empty($dataMahasiswa)):?>
-                                    <?php $no = 1; ?>
-                                    <?php foreach ($dataMahasiswa as $data) : ?>
+                                    <?php if (!empty($dataMahasiswa)) : ?>
+                                        <?php $no = 1; ?>
+                                        <?php foreach ($dataMahasiswa as $data) : ?>
 
-                                        <tr>
-                                            <td><?= $no ?></td>
-                                            <td><?= $data['nim']; ?></td>
-                                            <td><?= $data['nama_mhs']; ?></td>
-                                            <td><?= ($data['jenis_kelamin'] == "P") ? ('Perempuan') : ('Laki-Laki')   ?></td>
-                                            <td><?= $data['prodi']; ?></td>
-                                            <td><?= $data['email']; ?></td>
-                                            <td id="action">
-                                                <div class="btn-group ">
-                                                    <button id="updateDataMahasiswa"  data-id="<?=$data['id']?>"  class="btn bg-success updateDataMahasiswa">Update</button>
-                                                    <button  class="btn bg-danger hapusDataMahasiswa" data-id="<?=$data['id']?>">Hapus</button>
-                                                </div>
-                                            </td>
-                                            <td style="display:none;"><?= $data['ttl']; ?></td>
-                                            <td style="display:none;"><?= $data['no_hp']; ?></td>
-                                            <td style="display:none;"><?= $data['foto']; ?></td>
-                                        </tr>
-                                        <?php $no++; ?>
-                                    <?php endforeach; ?>
-                                    <?php else:?>
-                                    <td class="text-center" colspan="7">No Data</td>
-                                    <?php endif;?>
+                                            <tr>
+                                                <td><?= $no ?></td>
+                                                <td><?= $data['nim']; ?></td>
+                                                <td><?= $data['nama_mhs']; ?></td>
+                                                <td><?= ($data['jenis_kelamin'] == "P") ? ('Perempuan') : ('Laki-Laki')   ?></td>
+                                                <td><?= $data['prodi']; ?></td>
+                                                <td><?= $data['email']; ?></td>
+                                                <td id="action">
+                                                    <div class="btn-group ">
+                                                        <button id="updateDataMahasiswa" data-id="<?= $data['id'] ?>" class="btn bg-success updateDataMahasiswa">Update</button>
+                                                        <button class="btn bg-danger hapusDataMahasiswa" data-id="<?= $data['id'] ?>">Hapus</button>
+                                                    </div>
+                                                </td>
+                                                <td style="display:none;"><?= $data['ttl']; ?></td>
+                                                <td style="display:none;"><?= $data['no_hp']; ?></td>
+                                                <td style="display:none;"><?= $data['foto']; ?></td>
+                                            </tr>
+                                            <?php $no++; ?>
+                                        <?php endforeach; ?>
+                                    <?php else : ?>
+                                        <td class="text-center" colspan="7">No Data</td>
+                                    <?php endif; ?>
                                 </tbody>
                             </table>
                         </div>
@@ -91,14 +91,14 @@
 
                         <p class="text-center display-4 mb-5">Daftar Soal</p>
                         <div class="btn-soal w-100 text-center mb-3">
-                            <button  data-bs-toggle="modal" data-bs-target="#import-modal" class="btn bg-success">&uparrow; Import Data</button>
+                            <button data-bs-toggle="modal" data-bs-target="#import-modal" class="btn bg-success">&uparrow; Import Data</button>
                             <button id="tambahDataSoal" class="btn bg-primary" data-bs-toggle="modal" data-bs-target="#soal-modal">&plus;
                                 Tambah Soal </button>
                             <!-- <button class="btn bg-info">&downarrow; Export Data</button> -->
                         </div>
                         <div class="table-wrapper table-responsive">
 
-                                    
+
                             <table id="daftar-soal" class="display table  table-hover table-striped  w-100">
 
                                 <thead>
@@ -119,33 +119,33 @@
 
                                 <tbody>
                                     <?php $no = 1; ?>
-                                    <?php if (!empty($dataSoal)):?>
-                                    
-                                    <?php foreach ($dataSoal as $data) : ?>
-                                        <input type="hidden" name="id_soal" value="<?=$data['id']?>">
-                                        <tr>
-                                            <td><?= $no ?></td>
-                                            <td><?= $data['kategori'] ?></td>
-                                            <td><?= $data['jenis_soal'] ?></td>
-                                            <td><?= $data['soal'] ?></td>
-                                            <td><?= $data['opsi_a'] ?></td>
-                                            <td><?= $data['opsi_b'] ?></td>
-                                            <td><?= $data['opsi_c'] ?></td>
-                                            <td><?= $data['opsi_d'] ?></td>
-                                            <td><?= $data['jawaban'] ?></td>
-                                            <td><?= $data['status'] ?></td>
-                                            <td>
-                                                <div class="btn-group ">
-                                                    <button id="update-soal" data-id="<?=$data['id']?>" type="submit" class="btn bg-success updateDataSoal">Update</button>
-                                                    <button id="hapus-soal" class="btn bg-danger hapusDataSoal" data-id="<?=$data['id']?>">Hapus</button>
-                                                </div>
-                                            </td>
-                                        </tr>
-                                        <?php $no++; ?>
-                                    <?php endforeach; ?>
-                                    <?php else:?>
-                                    <td class="text-center" colspan="42">No Data</td>
-                                    <?php endif;?>
+                                    <?php if (!empty($dataSoal)) : ?>
+
+                                        <?php foreach ($dataSoal as $data) : ?>
+                                            <input type="hidden" name="id_soal" value="<?= $data['id'] ?>">
+                                            <tr>
+                                                <td><?= $no ?></td>
+                                                <td><?= $data['kategori'] ?></td>
+                                                <td><?= $data['jenis_soal'] ?></td>
+                                                <td><?= $data['soal'] ?></td>
+                                                <td><?= $data['opsi_a'] ?></td>
+                                                <td><?= $data['opsi_b'] ?></td>
+                                                <td><?= $data['opsi_c'] ?></td>
+                                                <td><?= $data['opsi_d'] ?></td>
+                                                <td><?= $data['jawaban'] ?></td>
+                                                <td><?= $data['status'] ?></td>
+                                                <td>
+                                                    <div class="btn-group ">
+                                                        <button id="update-soal" data-id="<?= $data['id'] ?>" type="submit" class="btn bg-success updateDataSoal">Update</button>
+                                                        <button id="hapus-soal" class="btn bg-danger hapusDataSoal" data-id="<?= $data['id'] ?>">Hapus</button>
+                                                    </div>
+                                                </td>
+                                            </tr>
+                                            <?php $no++; ?>
+                                        <?php endforeach; ?>
+                                    <?php else : ?>
+                                        <td class="text-center" colspan="42">No Data</td>
+                                    <?php endif; ?>
 
                                 </tbody>
                             </table>
@@ -177,19 +177,23 @@
                                 </thead>
 
                                 <tbody>
-                                    <?php $no=1;?>
-                                    <?php foreach($dataHasil as $data):?>
-                                    <tr>
-                                        <td><?=$no?></td>
-                                        <td><?=$data['nim']?></td>
-                                        <td><?=$data['nama_mhs']?></td>
-                                        <td>6 Juni 2021</td>
-                                        <td><?=$data['skor']?></td>
-                                        <td><?=$data['scp']?></td>
-                                    </tr>
-                                    <?php $no++;?>
-                                    <?php endforeach;?>
-                                
+                                    <?php if (!empty($dataHasil)) : ?>
+                                        <?php $no = 1; ?>
+                                        <?php foreach ($dataHasil as $data) : ?>
+                                            <tr>
+                                                <td><?= $no ?></td>
+                                                <td><?= $data['nim'] ?></td>
+                                                <td><?= $data['nama_mhs'] ?></td>
+                                                <td>6 Juni 2021</td>
+                                                <td><?= $data['skor'] ?></td>
+                                                <td><?= $data['scp'] ?></td>
+                                            </tr>
+                                            <?php $no++; ?>
+                                        <?php endforeach; ?>
+                                    <?php else : ?>
+                                        <td class="text-center" colspan="42">No Data</td>
+                                    <?php endif; ?>
+
                                 </tbody>
                             </table>
                         </div>
@@ -296,8 +300,7 @@
                 </button>
             </div>
             <div class="modal-body">
-                <form 
-                 id="formSoal" enctype="multipart/form-data">
+                <form id="formSoal" enctype="multipart/form-data">
                     <div class="form-group mt-3">
                         <label class="form-label" for="jenis-soal"><b>Jenis</b> </label>
                         <select class="form-select" name="jenis-soal" id="jenis-soal-input" required>
@@ -336,7 +339,7 @@
                         <input type="hidden" name="opsiA" id="opsiA">
                         <label class="form-label" for="opsiA"><b>Opsi A</b> </label>
                         <div class="ql-editor" id="opsiA-container">
-                        <small>Masukkan Disini</small>
+                            <small>Masukkan Disini</small>
                         </div>
                         <span class="form-text">Masukkan Opsi A</span>
                     </div>
@@ -345,8 +348,8 @@
                         <input type="hidden" name="soalB" id="soalB">
                         <label class="form-label" for="opsiB"><b>Opsi B</b> </label>
                         <div class="ql-editor" id="opsiB-container">
-                            
-                        <small>Masukkan Disini</small>
+
+                            <small>Masukkan Disini</small>
                         </div>
                         <span class="form-text">Masukkan Opsi B</span>
                     </div>
@@ -354,7 +357,7 @@
                         <input type="hidden" name="opsiC" id="opsiC">
                         <label class="form-label" for="opsiC"><b>Opsi C</b> </label>
                         <div class="ql-editor" id="opsiC-container">
-                        <small>Masukkan Disini</small>
+                            <small>Masukkan Disini</small>
 
                         </div>
                         <span class="form-text">Masukkan Opsi C</span>
@@ -363,7 +366,7 @@
                         <input type="hidden" name="opsiD" id="opsiD">
                         <label class="form-label" for="opsiD"><b>Opsi D</b> </label>
                         <div class="ql-editor" id="opsiD-container">
-                        <small>Masukkan Disini</small>
+                            <small>Masukkan Disini</small>
                         </div>
                         <span class="form-text">Masukkan Opsi D</span>
                     </div>
@@ -454,13 +457,13 @@
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close" style="color: white;"></button>
             </div>
             <div class="modal-body">
-                <form action="<?=base_url('Test');?>" method="POST" enctype="multipart/form-data">
+                <form action="<?= base_url('Test'); ?>" method="POST" enctype="multipart/form-data">
                     <div class="form-group mt-3">
                         <label class="form-label" for=""><b>file</b> </label>
                         <input class="form-control" type="file" name="file" id="file" required>
                         <span class="form-text text-danger">masukkan File yang sesuai format!!</span>
                     </div>
-                    
+
             </div>
             <div class="modal-footer">
                 <div class="btn-group w-100 justify-content-end">
@@ -482,13 +485,13 @@
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close" style="color: white;"></button>
             </div>
             <div class="modal-body">
-                <form action="<?=base_url('Test/mahasiswaImport');?>" method="POST" enctype="multipart/form-data">
+                <form action="<?= base_url('Test/mahasiswaImport'); ?>" method="POST" enctype="multipart/form-data">
                     <div class="form-group mt-3">
                         <label class="form-label" for=""><b>file</b> </label>
                         <input class="form-control" type="file" name="file" id="file" required>
                         <span class="form-text text-danger">masukkan File yang sesuai format!!</span>
                     </div>
-                    
+
             </div>
             <div class="modal-footer">
                 <div class="btn-group w-100 justify-content-end">
@@ -504,48 +507,47 @@
 
 
 
-<div class="modal fade" id="profilModalDash" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1"
-        aria-labelledby="staticBackdropLabel" aria-hidden="true">
-        <div class="modal-dialog modal-lg">
-            <div class="modal-content ">
-                <div class="modal-header bg-primary">
-                    <h5 class="modal-title" id="staticBackdropLabel">Detail Profil Mahasiswa</h5>
-                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close" style="color: white;"></button>
-                </div>
-                <div class="modal-body p-4">
-                    <img class="rounded-3 position-absolute fotoPDash"  alt="" height="auto" width="150">
-                    <div class="row" style="margin-left: 12em;">
-                        <div class="col-4 ">
-                            
-                            <p>NIM</p>
-                            <p>Nama Lengkap</p>
-                            <p>Jenis Kelamin</p>
-                            <p>Program Studi</p>
-                            <p>Tanggal Lahir</p>
-                            <p>Email</p>
-                            <p>No. Handphone</p>
-                        </div>
-                        <div class="col-8 ">
-                            <p class="nimPDash"></p>
-                            <p class="namaPDash"> </p>
-                            <p class="JkPDash"></p>
-                            <p class="prodiPDash"></p>
-                            <p class="ttlPDash"></p>
-                            <p class="emailPDash"></p>
-                            <p class="hpPDash"></p>
-                        </div>
+<div class="modal fade" id="profilModalDash" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content ">
+            <div class="modal-header bg-primary">
+                <h5 class="modal-title" id="staticBackdropLabel">Detail Profil Mahasiswa</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close" style="color: white;"></button>
+            </div>
+            <div class="modal-body p-4">
+                <img class="rounded-3 position-absolute fotoPDash" alt="" height="auto" width="150">
+                <div class="row" style="margin-left: 12em;">
+                    <div class="col-4 ">
+
+                        <p>NIM</p>
+                        <p>Nama Lengkap</p>
+                        <p>Jenis Kelamin</p>
+                        <p>Program Studi</p>
+                        <p>Tanggal Lahir</p>
+                        <p>Email</p>
+                        <p>No. Handphone</p>
+                    </div>
+                    <div class="col-8 ">
+                        <p class="nimPDash"></p>
+                        <p class="namaPDash"> </p>
+                        <p class="JkPDash"></p>
+                        <p class="prodiPDash"></p>
+                        <p class="ttlPDash"></p>
+                        <p class="emailPDash"></p>
+                        <p class="hpPDash"></p>
                     </div>
                 </div>
-                <div class="modal-footer">
-                    <div class="btn-group w-100 justify-content-end">
-                        <button class="btn bg-danger" data-bs-dismiss="modal">Tutup</button>
-                    </div>
+            </div>
+            <div class="modal-footer">
+                <div class="btn-group w-100 justify-content-end">
+                    <button class="btn bg-danger" data-bs-dismiss="modal">Tutup</button>
                 </div>
             </div>
         </div>
     </div>
+</div>
 
 
-    <!-- model end  -->
+<!-- model end  -->
 <script src="js/admin.js"></script>
 <?= $this->endSection('main'); ?>
