@@ -1,5 +1,5 @@
 $(function () {
-  var table = $("#daftar-mahasiswa").DataTable();
+  $("#daftar-mahasiswa").DataTable();
   $("#daftar-soal").DataTable();
   $("#daftar-tpa").DataTable();
 

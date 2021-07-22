@@ -144,7 +144,7 @@
                                             <?php $no++; ?>
                                         <?php endforeach; ?>
                                     <?php else : ?>
-                                        <td class="text-center" colspan="42">No Data</td>
+                                        <td class="text-center" colspan="11">No Data</td>
                                     <?php endif; ?>
 
                                 </tbody>
@@ -184,14 +184,20 @@
                                                 <td><?= $no ?></td>
                                                 <td><?= $data['nim'] ?></td>
                                                 <td><?= $data['nama_mhs'] ?></td>
-                                                <td>6 Juni 2021</td>
+                                                <td><?= $data['tgl']?></td>
                                                 <td><?= $data['skor'] ?></td>
                                                 <td><?= $data['scp'] ?></td>
                                             </tr>
                                             <?php $no++; ?>
                                         <?php endforeach; ?>
                                     <?php else : ?>
-                                        <td class="text-center" colspan="42">No Data</td>
+                                        
+                                        <td colspan="6" style="text-align: center;">No Data</td>
+                                        <td style="display:none;">No Data</td>
+                                        <td style="display:none;">No Data</td>
+                                        <td style="display:none;">No Data</td>
+                                        <td style="display:none;">No Data</td>
+                                        <td style="display:none;">No Data</td>
                                     <?php endif; ?>
 
                                 </tbody>
