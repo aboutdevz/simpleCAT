@@ -21,7 +21,7 @@ class Dashboard extends Controller
 				'kategoriform' => $Kategori,
 				'jenisform' => $jenis,
 				'dataMahasiswa' => $dataMahasiswa,
-				'dataSoal' =>  (!empty($dataSoal['field']['allSoal'])) ? ($dataSoal['field']['allSoal']) : (null),
+				'dataSoal' => (!empty($dataSoal['field']['allSoal'])) ? ($dataSoal['field']['allSoal']) : (null),
 				'dataHasil' => $dataHasil['field']
 
 			];
@@ -49,13 +49,13 @@ class Dashboard extends Controller
 			throw $th;
 		}
 	}
-	
+
 	public function getAllMahasiswa()
 	{
 		$data = [
 			'data' => model('Mahasiswa')->findAll()
 		];
-		return json_encode($data) ;
+		return json_encode($data);
 	}
 
 	public function updateSoal()
@@ -111,9 +111,9 @@ class Dashboard extends Controller
 					$data['foto'] = imgAsset('profil/' . $file->getName());
 					$file->move(ROOTPATH . 'public/assets/img/profil');
 				}
-				
+
 				$dateTemp = strtotime($data['ttl']);
-				$data['ttl']  = date('d F Y',$dateTemp);
+				$data['ttl']  = date('d F Y', $dateTemp);
 				try {
 					//code...
 					$modelMhs->save($data);
@@ -131,7 +131,7 @@ class Dashboard extends Controller
 	{
 		if ($this->request->isAJAX()) {
 			$id = $this->request->getPost('id');
-			
+
 
 			try {
 				//code...
@@ -151,7 +151,7 @@ class Dashboard extends Controller
 	{
 		if ($this->request->isAJAX()) {
 			$data = $this->request->getPost();
-			
+
 			$data['id_role'] = 2;
 			$data['password'] =  password_hash($data['password'], PASSWORD_DEFAULT);
 			$files = $this->request->getFile('profile');
@@ -163,9 +163,9 @@ class Dashboard extends Controller
 					$data['foto'] = imgAsset('profil/' . $file->getName());
 					$file->move(ROOTPATH . 'public/assets/img/profil');
 				}
-				
+
 				$dateTemp = strtotime($data['ttl']);
-				$data['ttl']  = date('d F Y',$dateTemp);
+				$data['ttl']  = date('d F Y', $dateTemp);
 				try {
 					//code...
 					$modelMhs->save($data);
@@ -185,19 +185,21 @@ class Dashboard extends Controller
 		$modelMhs = model('Mahasiswa');
 		try {
 			//code...
-			if ($modelHasil->deleteCascade($id))
-		{
-			try {
-				$modelMhs->delete($id);
-			} catch (\Exception $th) {
-				throw $th;
+			if ($modelHasil->deleteCascade($id)) {
+				try {
+					$modelMhs->delete($id);
+				} catch (\Exception $th) {
+					throw $th;
+				}
+			} else {
+				try {
+					$modelMhs->delete($id);
+				} catch (\Exception $th) {
+					throw $th;
+				}
 			}
-
-		}
 		} catch (\Exception $th) {
 			throw $th;
 		}
-		
 	}
-
 }
