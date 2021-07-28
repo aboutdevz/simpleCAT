@@ -8,11 +8,14 @@ class Dashboard extends Controller
 {
 	public function index()
 	{
-		helper(['form', 'url']);
+		helper(['form', 'url', 'd']);
+		$db = \Config\Database::connect();
+		$tb_mahasiswa = $db->table('tb_mahasiswa');
+
 		$session = service('session');
 		$Kategori = model('Kategori')->findAll();
 		$jenis = model('jenisSoal')->findAll();
-		$dataMahasiswa = model('Mahasiswa')->findAll();
+		$dataMahasiswa = $tb_mahasiswa->select("*")->orderBy('nim','DESC')->get()->getResultArray();
 		$dataSoal = model('Soal')->getSoal();
 		$dataHasil = model('Hasil')->getHasil();
 		if ($session->credential['role'] == "admin") {
