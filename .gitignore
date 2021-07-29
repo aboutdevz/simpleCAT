@@ -131,6 +131,7 @@ nb-configuration.xml
 #app data
 
 #env
+
 env
 .env
 
