@@ -81,7 +81,7 @@ class Autoload extends AutoloadConfig
 	 * @var array<int, string>
 	 */
 	public $files = [
-		APPPATH.'helpers/site_helper.php'
+		APPPATH.'helpers/gambar_helper.php'
 	];
 
 }

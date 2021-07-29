@@ -8,13 +8,13 @@ class Dashboard extends Controller
 {
 	public function index()
 	{
-		helper(['form', 'url', 'd']);
+		helper(['form', 'url', 'gambar']);
 		$db = \Config\Database::connect();
 		$tb_mahasiswa = $db->table('tb_mahasiswa');
 
 		$session = service('session');
 		$Kategori = model('Kategori')->findAll();
-		$jenis = model('jenisSoal')->findAll();
+		$jenis = model('JenisSoal')->findAll();
 		$dataMahasiswa = $tb_mahasiswa->select("*")->orderBy('nim','DESC')->get()->getResultArray();
 		$dataSoal = model('Soal')->getSoal();
 		$dataHasil = model('Hasil')->getHasil();

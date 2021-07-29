@@ -20,7 +20,7 @@
 # APP
 #--------------------------------------------------------------------
 
-    app.baseURL = 'http://localhost:8080/'
+    app.baseURL = 'http://tpanusaputra.online/'
 # app.forceGlobalSecureRequests = false
 
 # app.sessionDriver = 'CodeIgniter\Session\Handlers\FileHandler'
@@ -37,10 +37,10 @@
 # DATABASE
 #--------------------------------------------------------------------
 
- database.default.hostname = localhost
- database.default.database = exam
- database.default.username = root
- database.default.password = Comanderix9
+ database.default.hostname = localhost  
+ database.default.database = tpanusap_CAT
+ database.default.username = tpanusap_CAT
+ database.default.password = zDu,LFkg1&(s
 # database.default.DBDriver = MySQLi
 # database.default.DBPrefix =
 

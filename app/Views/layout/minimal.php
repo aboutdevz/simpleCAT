@@ -1,4 +1,4 @@
-
+<?php helper('gambar');?>
 
 <!doctype html>
 <html lang="en" id="rootHtml">
