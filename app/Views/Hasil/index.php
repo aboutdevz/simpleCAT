@@ -26,13 +26,13 @@ $dataMhs = $session->credential['dataMhs'];
             <img class="hasil-logo d-block position-absolute border-0  w-25  h-auto" src="<?=imgAsset('appImg/fav.png')?>" alt="logo kampus">
         </div>
         <hr>
-        <div class="col-8 d-flex border-end border-2">
+        <div class="col-12 col-lg-8 d-flex border-end border-2">
             <div class="row">
-                <div class="col-4">
+                <div class="col-12 col-lg-4">
 
                     <img class="img-thumbnail" src="<?=$foto?>" alt="mahasiswa foto" style="height:auto;width:auto">
                 </div>
-                <div class="col-8">
+                <div class="col-12 col-lg-8">
 <span class="d-inline align-self-center ms-5">
                 <div class="row">
                     <div class="col-4">
@@ -64,7 +64,7 @@ $dataMhs = $session->credential['dataMhs'];
             </div>
             
         </div>
-        <div class="col-4 d-flex">
+        <div class="col-12 col-md-4 d-flex">
             <span class="ms-4 align-self-center">
                 
                         <p class="fw-light">Verbal </p>
@@ -101,32 +101,38 @@ $dataMhs = $session->credential['dataMhs'];
 <div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1"
         aria-labelledby="staticBackdropLabel" aria-hidden="true">
         <div class="modal-dialog modal-lg">
-            <div class="modal-content ">
+            <div class="modal-content">
                 <div class="modal-header bg-primary">
                     <h5 class="modal-title" id="staticBackdropLabel">Detail Profil Mahasiswa</h5>
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close" style="color: white;"></button>
                 </div>
-                <div class="modal-body p-4">
-                    <img class="rounded-3 position-absolute" src="<?=$dataMhs->foto?>" alt="" height="auto" width="150">
-                    <div class="row" style="margin-left: 12em;">
-                        <div class="col-4 ">
-                            
-                            <p>NIM</p>
-                            <p>Nama Lengkap</p>
-                            <p>Jenis Kelamin</p>
-                            <p>Program Studi</p>
-                            <p>Tanggal Lahir</p>
-                            <p>Email</p>
-                            <p>No. Handphone</p>
+                <div class="modal-body row p-4">
+                    <div class="img-profile col-12 col-lg-4 mb-5 justify-content-center">
+                        <img class="rounded-3 " src="<?=$dataMhs->foto?>" alt="" height="auto" width="150">
+                        
                         </div>
-                        <div class="col-8 ">
-                            <p>:<?=" ".$dataMhs->nim?></p>
-                            <p>:<?=" ".$dataMhs->nama_mhs?> </p>
-                            <p>:<?=" ". ($dataMhs->jenis_kelamin == "P") ? (' Perempuan') : (' Laki-Laki') ?></p>
-                            <p>:<?=" ".$dataMhs->prodi?></p>
-                            <p>:<?=" ".$dataMhs->ttl?></p>
-                            <p>:<?=" ".$dataMhs->email?></p>
-                            <p>:<?=" ".$dataMhs->no_hp?></p>
+                    <div class="col-12 col-lg-8 profile-body">
+
+                        <div class="row">
+                            <div class="col-6 col-lg-4 ">
+                                
+                                <p>NIM</p>
+                                <p>Nama Lengkap</p>
+                                <p>Jenis Kelamin</p>
+                                <p>Program Studi</p>
+                                <p>Tanggal Lahir</p>
+                                <p>Email</p>
+                                <p>No. Handphone</p>
+                            </div>
+                            <div class="col-6 col-lg-8 ">
+                                <p>:<?=" ".$dataMhs->nim?></p>
+                                <p>:<?=" ".$dataMhs->nama_mhs?> </p>
+                                <p>:<?=" ".$dataMhs->jenis_kelamin  ?></p>
+                                <p>:<?=" ".$dataMhs->prodi?></p>
+                                <p>:<?=" ".$dataMhs->ttl?></p>
+                                <p>:<?=" ".$dataMhs->email?></p>
+                                <p>:<?=" ".$dataMhs->no_hp?></p>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -138,7 +144,6 @@ $dataMhs = $session->credential['dataMhs'];
             </div>
         </div>
     </div>
-
 
   
     <!-- model end  -->
