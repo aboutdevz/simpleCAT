@@ -12,6 +12,7 @@ class Test extends BaseController
 {
 	public function index()
 	{
+		helper(['gambar']);
 		$files = $this->request->getFile('file');
 		try {
 			//code...
@@ -168,6 +169,7 @@ class Test extends BaseController
 
 	public function mahasiswaImport()
 	{
+		helper(['gambar']);
 		$files = $this->request->getFile('file');
 		try {
 			//code...

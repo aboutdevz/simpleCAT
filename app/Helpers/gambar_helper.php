@@ -3,5 +3,5 @@
 
     function imgAsset ($resource)
     {
-        return base_url('public/assets/img/'.$resource);
+        return base_url('assets/img/'.$resource);
     }

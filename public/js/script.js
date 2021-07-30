@@ -3,6 +3,10 @@ $(function () {
   $("#daftar-soal").DataTable();
   $("#daftar-tpa").DataTable();
 
+  function baseUrl(value) {
+    return window.location.protocol + "//" + window.location.host + "/" + value;
+  }
+  
   var toolbarOptions = [
     ["bold", "italic", "underline", "strike", "formula"], // toggled buttons
     ["blockquote", "code-block"],
@@ -866,9 +870,7 @@ $(function () {
     carouselAt += 1;
   });
 
-  function baseUrl(value) {
-    return window.location.protocol + "//" + window.location.host + "/" + value;
-  }
+  
 
   
 
