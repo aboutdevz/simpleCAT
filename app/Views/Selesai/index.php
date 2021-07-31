@@ -1,4 +1,8 @@
-<?php helper(['gambar']) ?>
+<?php
+    $session = \Config\Services::session();
+    helper(['gambar']);
+    $dataMhs = $session->credential['dataMhs'];
+ ?>
 
 <?= $this->extend('layout/master.php') ?>
 

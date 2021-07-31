@@ -47,6 +47,7 @@ class Login extends Controller
 
 	private function check($username, $password)
 	{
+		helper(['gambar']);
 		$session = \Config\Services::session();
 
 		$loginModelAdmin = model('Admin');
@@ -87,6 +88,8 @@ class Login extends Controller
 						'role' => $dataMhs['field']->role_name
 					]
 				];
+				$foto = ($credential['credential']['dataMhs']->foto == !null) ? ($credential['credential']['dataMhs']->foto) : (imgAsset('appImg/person-icon.png'));
+				$credential['credential']['dataMhs']->foto = $foto;
 				$session->set($credential);
 				return true;
 			} 

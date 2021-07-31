@@ -37,6 +37,7 @@ class Soal extends Controller
 
 	public function selesai()
 	{
+		helper(['gambar']);
 		if ($this->request->isAJAX()) {
 			$session = \Config\Services::session();
 
@@ -52,7 +53,7 @@ class Soal extends Controller
 					'nama' => $session->credential['dataMhs']->nama_mhs,
 					'nim' => $session->credential['dataMhs']->nim,
 					'jurusan' => $session->credential['dataMhs']->prodi,
-					'foto' => $session->credential['dataMhs']->foto,
+					'foto' => ($session->credential['dataMhs']->foto == !null) ? ($session->credential['dataMhs']->foto) : (imgAsset('appImg/person-icon.png')),
 					'verbal' => $data['verbal'],
 					'kuantitatif' => $data['kuantitatif'],
 					'logika' => $data['logika'],
