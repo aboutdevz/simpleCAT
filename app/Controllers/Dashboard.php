@@ -9,6 +9,7 @@ class Dashboard extends Controller
 	public function index()
 	{
 		helper(['form', 'url', 'gambar']);
+		
 		$db = \Config\Database::connect();
 		$tb_mahasiswa = $db->table('tb_mahasiswa');
 
@@ -37,6 +38,7 @@ class Dashboard extends Controller
 
 	public function getSoal()
 	{
+		
 		$id = $this->request->getPost('id');
 
 		$modelSoal = model('Soal')->getSingleSoal($id);
@@ -101,6 +103,7 @@ class Dashboard extends Controller
 
 	public function tambahMahasiswa()
 	{
+		helper(['gambar']);
 		if ($this->request->isAJAX()) {
 			$data = $this->request->getPost();
 			$data['id_role'] = 2;
@@ -112,7 +115,8 @@ class Dashboard extends Controller
 				if ($files > 0) {
 					$file = $this->request->getFile('profile');
 					$data['foto'] = imgAsset('profil/' . $file->getName());
-					$file->move(ROOTPATH . 'public/assets/img/profil');
+					$file->move(PUBLICHTML . 'assets/img/profil');
+					// $file->move(ROOTPATH . 'assets/img/profil');
 				}
 
 				$dateTemp = strtotime($data['ttl']);
@@ -121,9 +125,11 @@ class Dashboard extends Controller
 					//code...
 					$modelMhs->save($data);
 				} catch (\Exception $th) {
+					echo $th->getMessage();
 					die($th->getMessage());
 				}
 			} catch (\CodeIgniter\Database\Exceptions\DataException $th) {
+				echo $th->getMessage();
 				die($th->getMessage());
 			}
 		}
@@ -152,6 +158,7 @@ class Dashboard extends Controller
 
 	public function updateMahasiswa()
 	{
+		helper(['gambar']);
 		if ($this->request->isAJAX()) {
 			$data = $this->request->getPost();
 
@@ -163,8 +170,17 @@ class Dashboard extends Controller
 				$modelMhs = model('Mahasiswa');
 				if ($files > 0) {
 					$file = $this->request->getFile('profile');
+					
 					$data['foto'] = imgAsset('profil/' . $file->getName());
-					$file->move(ROOTPATH . 'public/assets/img/profil');
+					try {
+						//code...
+						$file->move( PUBLICHTML . 'assets/img/profil');
+						// $file->move(ROOTPATH . 'assets/img/profil');
+					} catch (\Exception $th) {
+						echo $th;
+						die($th->getMessage());
+					}
+					
 				}
 
 				$dateTemp = strtotime($data['ttl']);
@@ -179,6 +195,8 @@ class Dashboard extends Controller
 				die($th->getMessage());
 			}
 		}
+		
+
 	}
 
 	public function hapusMahasiswa()

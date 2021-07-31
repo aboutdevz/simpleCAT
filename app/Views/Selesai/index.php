@@ -1,3 +1,5 @@
+<?php helper(['gambar']) ?>
+
 <?= $this->extend('layout/master.php') ?>
 
 <?= $this->section('main'); ?>
@@ -31,7 +33,7 @@
                 </div>
                 <div class="modal-body row p-4">
                     <div class="img-profile col-12 col-lg-4 mb-5 justify-content-center">
-                        <img class="rounded-3 " src="<?=$dataMhs->foto?>" alt="" height="auto" width="150">
+                        <img class="rounded-3 " src="<?=($dataMhs->foto == !null) ? ($dataMhs->foto) :(imgAsset('appImg/person-icon.png')) ?>" alt="" height="auto" width="150">
                         
                         </div>
                     <div class="col-12 col-lg-8 profile-body">

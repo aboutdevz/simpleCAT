@@ -30,7 +30,7 @@ $dataMhs = $session->credential['dataMhs'];
             <div class="row">
                 <div class="col-12 col-lg-4">
 
-                    <img class="img-thumbnail" src="<?=$foto?>" alt="mahasiswa foto" style="height:auto;width:auto">
+                    <img class="img-thumbnail" src="<?=($foto == !null) ? ($foto) : (imgAsset('appImg/person-icon.png'))?>" alt="mahasiswa foto" style="height:auto;width:auto">
                 </div>
                 <div class="col-12 col-lg-8">
 <span class="d-inline align-self-center ms-5">

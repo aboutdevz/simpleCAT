@@ -223,7 +223,7 @@
                 <form id="formMahasiswa" enctype="multipart/form-data" method="POST" name="formMahasiswa">
                     <div class="form-group mt-3">
                         <label class="form-label" for=""><b>Profile</b> </label>
-                        <input class="form-control" type="file" name="profile" id="profile" required>
+                        <input class="form-control" type="file" name="profile" id="profile">
                         <span class="form-text">masukkan foto profile</span>
                     </div>
                     <div class="form-group">

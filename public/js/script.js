@@ -404,6 +404,8 @@ $(function () {
           $("#email").val(data.email);
           $("#no_hp").val(data.no_hp);
           formMahasiswa.submit(function (event) {
+            event.preventDefault();
+            event.stopImmediatePropagation();
             Swal.fire({
               title: "Yakin Update Data?",
               icon: "question",
@@ -418,6 +420,7 @@ $(function () {
                 var file = $("#profile")[0].files;
                 if (file.length > 0) {
                   formData.append("profile", file[0]);
+                }
                   formData.append("nim", $("#NIM").val());
                   formData.append("nama_mhs", $("#nama").val());
                   formData.append("password", $("#password").val());
@@ -430,7 +433,7 @@ $(function () {
                   formData.append("email", $("#email").val());
                   formData.append("no_hp", $("#no_hp").val());
                   formData.append("id", id);
-                }
+                
                 $.ajax({
                   type: "POST",
                   url: baseUrl("Dashboard/updateMahasiswa"),
@@ -453,7 +456,7 @@ $(function () {
                   },
                   error: function (xhr) {
                     // if error occured
-                    alert("Error karena" + xhr.statusText + xhr.responseText);
+                    alert("Error karena " + xhr.statusText + xhr.responseText);
                     modalMahasiswa.modal("hide");
                     deleteInputValue();
                   },
@@ -494,12 +497,13 @@ $(function () {
 
   btnTambahMahasiswa.on("click", function () {
     deleteInputValue();
-
+    
     labelFormMahasiswa.html("Tambah Data Mahasiswa");
     modalMahasiswa.modal("toggle");
     modalMahasiswa.modal("show");
     formMahasiswa.submit(function (event) {
-      var urlTambahMhs = baseUrl("Admin/tambahMahasiswa");
+      event.preventDefault();
+      event.stopImmediatePropagation();
       Swal.fire({
         title: "Yakin Tambah Data?",
         icon: "question",
@@ -510,27 +514,28 @@ $(function () {
         buttonsStyling: true,
       }).then(function (result) {
         if (result.isConfirmed) {
-          var formData = new FormData(form);
+          var formDataTambah = new FormData();
           var file = $("#profile")[0].files;
           if (file.length > 0) {
-            formData.append("profile", file[0]);
-            formData.append("nim", $("#NIM").val());
-            formData.append("nama_mhs", $("#nama").val());
-            formData.append("password", $("#password").val());
-            formData.append(
+            formDataTambah.append("profile", file[0]);
+          }
+            formDataTambah.append("nim", $("#NIM").val());
+            formDataTambah.append("nama_mhs", $("#nama").val());
+            formDataTambah.append("password", $("#password").val());
+            formDataTambah.append(
               "jenis_kelamin",
               $("input[name='kelamin']:checked").val()
             );
-            formData.append("prodi", $("#prodi").val());
-            formData.append("ttl", $("#ttl").val());
-            formData.append("email", $("#email").val());
-            formData.append("no_hp", $("#no_hp").val());
-          }
+            formDataTambah.append("prodi", $("#prodi").val());
+            formDataTambah.append("ttl", $("#ttl").val());
+            formDataTambah.append("email", $("#email").val());
+            formDataTambah.append("no_hp", $("#no_hp").val());
+          
 
           $.ajax({
             type: "POST",
             url: baseUrl("Dashboard/tambahMahasiswa"),
-            data: formData,
+            data: formDataTambah,
             contentType: false,
             processData: false,
             cache: false,
@@ -565,7 +570,7 @@ $(function () {
         }
         modalMahasiswa.modal("hide");
       });
-      event.preventDefault();
+      
     });
   });
 
