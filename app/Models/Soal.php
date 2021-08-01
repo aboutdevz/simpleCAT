@@ -87,8 +87,8 @@ class Soal extends Model
 	public function getJawabanSoal()
 	{
 		$queryJ = $this->db->query("SELECT `id`,`jawaban` FROM `tb_soal` ");
-
-		return json_encode($queryJ->getResultArray());
+		$out = array_values($queryJ->getResultArray());
+		return json_encode($out);
 	}
 
 	public function getSingleSoal($id)

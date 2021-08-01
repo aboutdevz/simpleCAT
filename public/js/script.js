@@ -701,14 +701,11 @@ $(function () {
 
   
   $.ajax({
-    type: "POST",
     url: baseUrl("Soal/cekJawaban"),
-    contentType: false,
-    processData: false,
     cache: false,
 
     success: function (response) {
-      allJawaban = JSON.parse(response);
+      allJawaban = response;
     },
     error: function (xhr) {
       // if error occured

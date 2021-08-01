@@ -80,8 +80,20 @@ class Soal extends Controller
 
 	public function cekJawaban()
 	{
+		if($this->request->isAjax())
+		{
+			try {
+				//code...
+				$data = model('Soal')->getJawabanSoal();
+				$this->response->setJSON($data);
+				echo $data;
+				$this->response->setStatusCode(200);
+			} catch (\Exception $th) {
+				echo $th->getMessage();
+				die($th->getMessage());
+			}
+			
+		}
 
-
-		echo (model('Soal')->getJawabanSoal());
 	}
 }

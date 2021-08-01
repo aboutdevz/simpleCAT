@@ -2,6 +2,7 @@
 
 $session = \Config\Services::session();
 $dataMhs = $session->credential['dataMhs'];
+helper(['gambar']);
 ?>
 
 <?= $this->extend('layout/master.php') ?>
