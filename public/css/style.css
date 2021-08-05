@@ -177,3 +177,16 @@ body
         display: flex;
     }
  }
+
+ .soal-wrapper img
+ {
+     width: 100px;
+     height: 100px;
+     object-fit: contain;
+ }
+ #daftar-soal img
+ {
+     height: 100px;
+     width: 100px;
+     object-fit: contain;
+ }
