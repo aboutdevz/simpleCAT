@@ -173,6 +173,7 @@
                                         <th>Tanggal Tes</th>
                                         <th>Skor TPA</th>
                                         <th>Rekomendasi Program SCP</th>
+                                        <th>Keterangan</th>
                                     </tr>
                                 </thead>
 
@@ -187,6 +188,7 @@
                                                 <td><?= $data['tgl']?></td>
                                                 <td><?= $data['skor'] ?></td>
                                                 <td><?= $data['scp'] ?></td>
+                                                <td><?= $data['keterangan'] ?></td>
                                             </tr>
                                             <?php $no++; ?>
                                         <?php endforeach; ?>

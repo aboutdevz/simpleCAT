@@ -603,20 +603,28 @@ $(function () {
       jumlahBenarSoalLogika;
     var skorAll = Math.round((jumlahBenarAll / jumlahSoalAll) * 600 + 200);
     var scp = undefined;
+    var keterangan = undefined;
     if (skorVerbal > skorKuantitatif && skorVerbal > skorLogika) {
       scp = "Student Exchange Track";
+      keterangan = "Skor tertinggi adalah skor Tes Verbal";
     } else if (skorKuantitatif > skorVerbal && skorKuantitatif > skorLogika) {
       scp = "Research Track";
+      keterangan = "Skor tertinggi adalah skor Tes Kuantitatif";
     } else if (skorLogika > skorVerbal && skorLogika > skorKuantitatif) {
       scp = "Internship Track";
+      keterangan = "Skor tertinggi adalah skor Tes Logika";
     } else if (skorLogika == skorKuantitatif && skorLogika == skorVerbal) {
       scp = "Student Exchange / Research / Internship Track";
+      keterangan = "Skor Semua Sama";
     } else if (skorVerbal == skorKuantitatif) {
       scp = "Student Exchange / Research Track";
+      keterangan = "Skor yang sama antara Skor Tes Verbal Dan Kuantitatif";
     } else if (skorKuantitatif == skorLogika) {
       scp = "Research / Internship Track";
+      keterangan = "Skor yang sama antara Skor Tes Logika Dan Kuantitatif";
     } else if(skorVerbal == skorLogika) {
       scp = "Student Exchange / Internship Track";
+      keterangan = "Skor yang sama antara Skor Tes Verbal Dan Logika";
     } else 
     {
       scp = "Internship Track";
@@ -627,6 +635,7 @@ $(function () {
     formData.append("logika", skorLogika);
     formData.append("skor", skorAll);
     formData.append("scp", scp);
+    formData.append("keterangan", keterangan);
     Swal.fire({
       title: "Yakin Ingin Menyelesaikan Ujian?",
       icon: "question",

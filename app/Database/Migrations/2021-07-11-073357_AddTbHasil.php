@@ -49,6 +49,9 @@ class AddTbHasil extends Migration
 		'scp' => [
 			'type' => 'VARCHAR',
 			'constraint' => 255
+		],
+		'keterangan' => [
+			'type' => 'TEXT'
 		]
 
 	);

@@ -14,7 +14,7 @@ class Hasil extends Model
 	protected $returnType           = 'array';
 	protected $useSoftDeletes       = false;
 	protected $protectFields        = true;
-	protected $allowedFields        = ['id','id_mahasiswa','tgl','jawaban','verbal','kuantitatif','logika','skor','scp'];
+	protected $allowedFields        = ['id','id_mahasiswa','tgl','jawaban','verbal','kuantitatif','logika','skor','scp','keterangan'];
 
 	// Dates
 	protected $useTimestamps        = false;
