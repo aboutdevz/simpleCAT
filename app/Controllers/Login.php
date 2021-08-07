@@ -75,9 +75,14 @@ class Login extends Controller
 				return false;
 			}
 		} 
-		elseif ($loginModelMhs->getUser($username)['status'])
+		else
 		{
-			$dataMhs = $loginModelMhs->getUser($username);
+			try {
+				
+				$dataMhs = $loginModelMhs->getUser($username);
+			} catch (\Exception $th) {
+				return false;
+			}
 			$passCheck = password_verify($password, $dataMhs['field']->password);
 			
 			if ($dataMhs['field']->nim == $username && $passCheck) 
@@ -98,6 +103,7 @@ class Login extends Controller
 				return false;
 			}
 		}
+		
 
 
 
