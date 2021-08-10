@@ -19,6 +19,7 @@ class AddTbMahasiswa extends Migration
 		],
 		'nim' => [
 			'type' => 'INT',
+			'unique' => true,
 			'null' => false
 		],
 		'nama_mhs' => [
