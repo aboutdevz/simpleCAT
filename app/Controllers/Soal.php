@@ -75,7 +75,6 @@ class Soal extends Controller
 				throw $th;
 			}
 		}
-		return redirect()->to(base_url('Selesai'));
 	}
 
 	public function cekJawaban()

@@ -287,7 +287,7 @@
             </div>
             <div class="modal-footer">
                 <div class="btn-group w-100 justify-content-end">
-                    <button id="cancel" class="btn bg-danger" data-bs-dismiss="modal">Kembali</button>
+                    <button id="cancel" type="button" class="btn bg-danger" data-bs-dismiss="modal">Kembali</button>
                     <button id="submit-mahasiswa" type="submit" class="btn bg-success">simpan</button>
                 </div>
             </div>
@@ -401,7 +401,7 @@
             </div>
             <div class="modal-footer">
                 <div class="btn-group w-100 justify-content-end">
-                    <button class="btn bg-danger" data-bs-dismiss="modal">Kembali</button>
+                    <button class="btn bg-danger" type="button" data-bs-dismiss="modal">Kembali</button>
                     <button type="submit" class="btn bg-success">simpan</button>
                 </div>
             </div>
@@ -445,7 +445,7 @@
             </div>
             <div class="modal-footer">
                 <div class="btn-group w-100 justify-content-end">
-                    <button class="btn bg-danger" data-bs-dismiss="modal">Kembali</button>
+                    <button class="btn bg-danger" type="button" data-bs-dismiss="modal">Kembali</button>
                     <button type="submit" class="btn bg-success">simpan</button>
                 </div>
             </div>
@@ -475,7 +475,7 @@
             </div>
             <div class="modal-footer">
                 <div class="btn-group w-100 justify-content-end">
-                    <button id="cancel" class="btn bg-danger" data-bs-dismiss="modal">Kembali</button>
+                    <button id="cancel" type="button" class="btn bg-danger" data-bs-dismiss="modal">Kembali</button>
                     <button type="submit" class="btn bg-success">simpan</button>
                 </div>
             </div>
@@ -503,7 +503,7 @@
             </div>
             <div class="modal-footer">
                 <div class="btn-group w-100 justify-content-end">
-                    <button id="cancel" class="btn bg-danger" data-bs-dismiss="modal">Kembali</button>
+                    <button id="cancel" type="button" class="btn bg-danger" data-bs-dismiss="modal">Kembali</button>
                     <button type="submit" class="btn bg-success">simpan</button>
                 </div>
             </div>
@@ -548,7 +548,7 @@
             </div>
             <div class="modal-footer">
                 <div class="btn-group w-100 justify-content-end">
-                    <button class="btn bg-danger" data-bs-dismiss="modal">Tutup</button>
+                    <button class="btn bg-danger" type="button" data-bs-dismiss="modal">Tutup</button>
                 </div>
             </div>
         </div>

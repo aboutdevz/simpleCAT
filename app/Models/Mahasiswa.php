@@ -88,11 +88,8 @@ class Mahasiswa extends Model
 			else
 			{
 				echo 'mahasiswa gagal';
-				$data = [
-					'field' => null,
-					'status' => false
-				];
-				return $data;
+				
+				return false;
 			}
 
 	}

@@ -1,8 +1,14 @@
 $(function () {
-  $("#daftar-mahasiswa").DataTable();
-  $("#daftar-soal").DataTable();
-  $("#daftar-tpa").DataTable();
+  async function initDatatable() {
+    $("#daftar-mahasiswa").DataTable();
+    $("#daftar-soal").DataTable();
+    $("#daftar-tpa").DataTable();
 
+  }
+
+  initDatatable();
+
+  
   function baseUrl(value) {
     return window.location.protocol + "//" + window.location.host + "/" + value;
   }
@@ -48,7 +54,55 @@ $(function () {
   var jawabanSoal = $("#jawaban-soal");
   var statusSoal = $("#status-soal");
 
-  
+  function ubahTanggal(tanggal) {
+    const tanggalHasil = [];
+    let [hari, bulan, tahun] = tanggal.split(' ');
+    hari = (hari.length > 1) ? (hari) : (`0${hari}`);
+    
+    switch (bulan) {
+        case "Januari":
+            bulan = "01";
+            break;
+        case "Februari":
+            bulan = "02";
+            break;
+        case "Maret":
+            bulan = "03";
+            break;
+        case "April":
+            bulan = "04";
+            break;
+        case "Mei":
+            bulan = "05";
+            break;
+        case "Juni":
+            bulan = "06";
+            break;
+        case "Juli":
+            bulan = "07";
+            break;
+        case "Agustus":
+            bulan = "08";
+            break;
+        case "September":
+            bulan = "09";
+            break;
+        case "Oktober":
+            bulan = "10";
+            break;
+        case "November":
+            bulan = "11";
+            break;
+        case "Desember":
+            bulan = "12";
+            break;
+    
+        default:
+            break;
+    }
+    tanggalHasil.push(hari, bulan, tahun);
+    return tanggalHasil.reverse().join('-');
+}
 
   function deleteInputValue() {
     $("#profile").val("");
@@ -129,14 +183,16 @@ $(function () {
             window.location.reload();
           },
           error: function (xhr) {
-            // if error occured
-            alert("Error karena" + xhr.statusText + xhr.responseText);
-            console.log(xhr);
             modalSoal.modal("hide");
-            deleteInputValue();
+                deleteInputValue();
+                Swal.fire(
+                  "Error",
+                  "Oops, Data Anda Gagal Disimpan.", // had a missing comma
+                  "error"
+                );
           },
           failure: function (response) {
-            modalSoal.modal("hide");
+            modalSoal.modal("hide");  
             deleteInputValue();
             Swal.fire(
               "Error",
@@ -177,7 +233,8 @@ $(function () {
         quillc.root.innerHTML = data.opsi_c;
         quilld.root.innerHTML = data.opsi_d;
         jawabanSoal.val(data.jawaban);
-        statusSoal.val(data.status);
+        let status = data.status;
+        statusSoal.val(status.charAt(0).toUpperCase() + status.slice(1));
 
         formSoal.submit(function (event) {
           Swal.fire({
@@ -224,10 +281,13 @@ $(function () {
                 window.location.reload();
               },
               error: function (xhr) {
-                // if error occured
-                alert("Error karena" + xhr.statusText + xhr.responseText);
                 modalSoal.modal("hide");
                 deleteInputValue();
+                Swal.fire(
+                  "Error",
+                  "Oops, Data Anda Gagal Disimpan.", // had a missing comma
+                  "error"
+                );
               },
               failure: function (response) {
                 modalSoal.modal("hide");
@@ -283,10 +343,13 @@ $(function () {
             window.location.reload();
           },
           error: function (xhr) {
-            // if error occured
-            alert("Error karena" + xhr.statusText + xhr.responseText);
             modalSoal.modal("hide");
             deleteInputValue();
+            Swal.fire(
+              "Error",
+              "Oops, Data Anda Gagal Disimpan.", // had a missing comma
+              "error"
+            );
           },
           failure: function (response) {
             modalSoal.modal("hide");
@@ -350,10 +413,13 @@ $(function () {
               window.location.reload();
             },
             error: function (xhr) {
-              // if error occured
-              alert("Error karena" + xhr.statusText + xhr.responseText);
               modalMahasiswa.modal("hide");
               deleteInputValue();
+              Swal.fire(
+                "Error",
+                "Oops, Data Anda Gagal Disimpan.", // had a missing comma
+                "error"
+              );
             },
             failure: function (response) {
               modalMahasiswa.modal("hide");
@@ -391,7 +457,7 @@ $(function () {
         processData: false,
         cache: false,
         success: function (response) {
-          var data = JSON.parse(response);
+          const data = JSON.parse(response);
           $("#NIM").val(data.nim);
           $("#nama").val(data.nama_mhs);
           if (data.jenis_kelamin == "P") {
@@ -400,7 +466,8 @@ $(function () {
             $("#kelamin_L").prop("checked", true);
           }
           $("#prodi").val(data.prodi);
-          $("#ttl").val(data.ttl);
+          $("#password").val(data.password);
+          $("#ttl").val(ubahTanggal(data.ttl));
           $("#email").val(data.email);
           $("#no_hp").val(data.no_hp);
           formMahasiswa.submit(function (event) {
@@ -455,10 +522,13 @@ $(function () {
                     window.location.reload();
                   },
                   error: function (xhr) {
-                    // if error occured
-                    alert("Error karena " + xhr.statusText + xhr.responseText);
                     modalMahasiswa.modal("hide");
                     deleteInputValue();
+                    Swal.fire(
+                      "Error",
+                      "Oops, Data Anda Gagal Disimpan.", // had a missing comma
+                      "error"
+                    );
                   },
                   failure: function (response) {
                     modalMahasiswa.modal("hide");
@@ -477,10 +547,13 @@ $(function () {
           });
         },
         error: function (xhr) {
-          // if error occured
           modalMahasiswa.modal("hide");
           deleteInputValue();
-          alert("Error karena" + xhr.statusText + xhr.responseText);
+          Swal.fire(
+            "Error",
+            response.statusText + response.responseText, // had a missing comma
+            "error"
+          );
         },
         failure: function (response) {
           modalMahasiswa.modal("hide");
@@ -552,10 +625,13 @@ $(function () {
               window.location.reload();
             },
             error: function (xhr) {
-              // if error occured
-              alert("Error karena" + xhr.statusText + xhr.responseText);
               modalMahasiswa.modal("hide");
               deleteInputValue();
+              Swal.fire(
+                "Error",
+                "Oops, Data Anda Gagal Disimpan.", // had a missing comma
+                "error"
+              );
             },
             failure: function (response) {
               modalMahasiswa.modal("hide");

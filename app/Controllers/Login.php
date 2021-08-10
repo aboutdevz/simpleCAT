@@ -80,10 +80,10 @@ class Login extends Controller
 			try {
 				
 				$dataMhs = $loginModelMhs->getUser($username);
+				$passCheck = password_verify($password, $dataMhs['field']->password);
 			} catch (\Exception $th) {
 				return false;
 			}
-			$passCheck = password_verify($password, $dataMhs['field']->password);
 			
 			if ($dataMhs['field']->nim == $username && $passCheck) 
 			{

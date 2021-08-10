@@ -3,6 +3,7 @@
 namespace App\Controllers;
 
 use CodeIgniter\Controller;
+use CodeIgniter\I18n\Time;
 
 class Dashboard extends Controller
 {
@@ -47,10 +48,10 @@ class Dashboard extends Controller
 			if ($modelSoal['status']) {
 				echo $modelSoal['field'];
 			} else {
-				$this->response->setStatusCode(404)->setBody("not found data mahasiswa");
+				return $this->response->setStatusCode(404)->setBody("not found data mahasiswa");
 			}
 		} catch (\Exception $th) {
-			$this->response->setStatusCode(404)->setBody("not found data mahasiswa");
+			return $this->response->setStatusCode(404)->setBody("not found data mahasiswa");
 			throw $th;
 		}
 	}
@@ -72,6 +73,7 @@ class Dashboard extends Controller
 		try {
 			$modelSoal->save($dataPost);
 		} catch (\Exception $th) {
+			return $this->response->setStatusCode(409)->setBody($th->getMessage());
 			throw $th;
 		}
 	}
@@ -84,6 +86,7 @@ class Dashboard extends Controller
 		try {
 			$modelSoal->delete($id);
 		} catch (\Exception $th) {
+			return $this->response->setStatusCode(409)->setBody($th->getMessage());
 			throw $th;
 		}
 	}
@@ -96,6 +99,7 @@ class Dashboard extends Controller
 		try {
 			$modelSoal->save($dataPost);
 		} catch (\Exception $th) {
+			return $this->response->setStatusCode(409)->setBody($th->getMessage());
 			throw $th;
 			echo $th;
 		}
@@ -117,20 +121,23 @@ class Dashboard extends Controller
 					$data['foto'] = imgAsset('profil/' . $file->getName());
 					$file->move(PUBLICHTML . 'assets/img/profil');
 					// $file->move(ROOTPATH . 'assets/img/profil');
+				} else
+				{
+					unset($data['profile']);
 				}
 
-				$dateTemp = strtotime($data['ttl']);
-				$data['ttl']  = date('d F Y', $dateTemp);
+				$dateTemp = new Time($data['ttl']);
+				$data['ttl']  = $dateTemp->toLocalizedString('d MMMM yyyy');
 				try {
 					//code...
 					$modelMhs->save($data);
 				} catch (\Exception $th) {
 					echo $th->getMessage();
-					die($th->getMessage());
+					return $this->response->setStatusCode(409)->setBody($th->getMessage());
 				}
 			} catch (\CodeIgniter\Database\Exceptions\DataException $th) {
 				echo $th->getMessage();
-				die($th->getMessage());
+				return $this->response->setStatusCode(409)->setBody($th->getMessage());
 			}
 		}
 	}
@@ -148,7 +155,7 @@ class Dashboard extends Controller
 				if ($modelMhs['status']) {
 					echo $modelMhs['field'];
 				} else {
-					$this->response->setStatusCode(404)->setBody("not found data mahasiswa");
+					return $this->response->setStatusCode(404)->setBody("not found data mahasiswa");
 				}
 			} catch (\Exception $th) {
 				throw $th;
@@ -179,19 +186,25 @@ class Dashboard extends Controller
 					} catch (\Exception $th) {
 						echo $th;
 						die($th->getMessage());
+						return $this->response->setStatusCode(500,'gagal pindah file');
 					}
 					
+				} else
+				{
+					unset($data['profile']);
 				}
 
-				$dateTemp = strtotime($data['ttl']);
-				$data['ttl']  = date('d F Y', $dateTemp);
+				$dateTemp = new Time($data['ttl']);
+				$data['ttl']  = $dateTemp->toLocalizedString('d MMMM yyyy');
 				try {
 					//code...
 					$modelMhs->save($data);
 				} catch (\Exception $th) {
+					return $this->response->setStatusCode(409)->setBody($th->getMessage());
 					die($th->getMessage());
 				}
 			} catch (\CodeIgniter\Database\Exceptions\DataException $th) {
+				return $this->response->setStatusCode(409)->setBody($th->getMessage());
 				die($th->getMessage());
 			}
 		}
@@ -210,16 +223,19 @@ class Dashboard extends Controller
 				try {
 					$modelMhs->delete($id);
 				} catch (\Exception $th) {
+					return $this->response->setStatusCode(409)->setBody($th->getMessage());
 					throw $th;
 				}
 			} else {
 				try {
 					$modelMhs->delete($id);
 				} catch (\Exception $th) {
+					return $this->response->setStatusCode(409)->setBody($th->getMessage());
 					throw $th;
 				}
 			}
 		} catch (\Exception $th) {
+			return $this->response->setStatusCode(409)->setBody($th->getMessage());
 			throw $th;
 		}
 	}
